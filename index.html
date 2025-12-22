@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Nour Al Hidaya — Librairie à Trappes</title>
+  <meta name="description" content="Nour Al Hidaya à Trappes : ouvrages, parfums, articles, vêtements. Découvrez une sélection et venez voir tout le reste en boutique." />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --text:rgba(0, 0, 0, 0.92);
+      --muted:rgba(0, 0, 0, 0.72);
+      --muted2:rgba(0, 0, 0, 0.55);
+      --border:rgba(150, 150, 150, 0.12);
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:22px;
+      --radius2:16px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#fffefbcc;
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+
+    /* Topbar */
+    .topbar{
+      border-bottom:1px solid var(--border);
+      background:rgba(11, 15, 20, 0);
+      backdrop-filter:blur(14px);
+      position:sticky;top:0;z-index:30;
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:14px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:220px}
+    .logoWrap{
+      width:100px;height:100px;border-radius:14px;overflow:hidden;
+     
+      background:rgba(255, 255, 255, 0);
+      display:grid;place-items:center;padding:8px;
+      flex:0 0 auto;
+    }
+    .brand h1{font-size:1.05rem;letter-spacing:.2px;line-height:1.1;font-weight:700}
+    .brand span{display:block;font-size:.8rem;color:var(--muted2);font-weight:500;margin-top:2px}
+
+    .links{display:flex;gap:14px;align-items:center}
+    .links a{
+      font-size:.92rem;color:var(--muted);
+      padding:10px 10px;border-radius:12px;
+    }
+    .links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+
+    .ctaRow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 14px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(218, 255, 196, 0.273);
+      color:var(--text);font-weight:600;font-size:.92rem;white-space:nowrap;
+    }
+    .btn:hover{background:rgba(255,255,255,.10)}
+    .btn.primary{
+      border-color:rgba(183, 247, 209, 0.222);
+      background:linear-gradient(135deg, rgba(183, 247, 209, 0.516), rgba(255, 233, 166, 0.33));
+    }
+
+    .burger{
+      display:none;border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      border-radius:14px;padding:10px 12px;
+    }
+    .drawer{display:none;border-top:1px solid var(--border);padding:10px 0 14px}
+    .drawer a{display:block;padding:12px 10px;border-radius:12px;color:var(--muted)}
+    .drawer a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .drawer.open{display:block}
+
+    /* Carousel pleine largeur */
+    .carousel{
+      position:relative;
+      width:100%;
+      height: clamp(320px, 48vw, 600px);
+      overflow:hidden;
+      border-bottom:1px solid var(--border);
+    }
+    .carousel-track{
+      display:flex;
+      height:100%;
+      transition:transform .55s ease;
+      will-change:transform;
+    }
+    .slide{
+      flex:0 0 100%;
+      height:100%;
+      background-size:cover;
+      background-position:center;
+      filter:saturate(1.02);
+    }
+    .car-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(0, 0, 0, 0.229) 0%, rgba(0, 0, 0, 0) 45%, rgba(0,0,0,.10) 100%);
+      display:flex;
+      align-items:flex-end;
+      padding:34px 0;
+    }
+    .car-text{max-width:640px}
+    .car-pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.25);
+      color:rgba(255, 255, 255, 0.934);
+      font-weight:700;font-size:.9rem;
+    }
+    .car-text h2{
+      margin-top:12px;
+      font-size:clamp(1.6rem, 3.6vw, 3rem);
+      line-height:1.08;
+      letter-spacing:-0.3px;
+      color: #ffffffe7;
+    }
+    
+    .car-text p{
+      margin-top:10px;
+      color:rgba(255,255,255,.82);
+      font-size:1rem;
+      max-width:58ch;
+    }
+    .car-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .car-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;height:44px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.28);
+      color:#fff;font-size:26px;line-height:0;
+      display:grid;place-items:center;
+      cursor:pointer;z-index:5;
+    }
+    .car-btn:hover{background:rgba(0,0,0,.40)}
+    .car-btn.prev{left:14px}
+    .car-btn.next{right:14px}
+
+    .car-dots{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:14px;
+      display:flex;
+      gap:8px;
+      z-index:6;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.18);
+      cursor:pointer;
+    }
+    .dot.active{background:rgba(255,255,255,.9)}
+
+    /* Hero */
+    .hero{padding:52px 0 22px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .heroLeft{
+      border:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+      overflow:hidden;
+      min-height:320px;
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(183,247,209,.35);
+      background:rgba(183,247,209,.12);
+      font-weight:600;font-size:.86rem;
+    }
+    .heroLeft h2{
+      margin-top:14px;
+      font-size:clamp(1.55rem, 3.2vw, 2.5rem);
+      line-height:1.12;
+      letter-spacing:-0.3px;
+    }
+    .heroLeft p{margin-top:12px;color:var(--muted);max-width:58ch;font-size:1.02rem}
+    .heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .chip{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      padding:8px 10px;border-radius:999px;font-size:.86rem;
+    }
+
+    .heroRight{display:flex;flex-direction:column;gap:12px}
+    .photoCard{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      overflow:hidden;
+      min-height:260px;
+      position:relative;
+      box-shadow:0 10px 40px rgba(0,0,0,.22);
+    }
+    .heroCardBg{
+      position:absolute;inset:0;
+      background:
+        linear-gradient(180deg, rgba(120, 244, 168, 0), rgba(0, 0, 0, 0)),
+        url("assets/hero.jpg") center/cover no-repeat;
+      filter:saturate(1.05);
+      transform:scale(1.02);
+  
+    }
+    .heroCardContent{
+      position:relative;
+      padding:22px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      gap:10px;
+    }
+    .loc{
+      display:inline-flex;align-items:center;gap:8px;
+      font-weight:700;font-size:1rem;
+      width:fit-content;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.25);
+    }
+    .heroCardContent h3{
+      font-size:1.35rem;
+      letter-spacing:-.2px;
+      line-height:1.15;
+    }
+    .heroCardContent p{
+      color:rgba(10, 10, 10, 0.82);
+      font-size:.95rem;
+      max-width:44ch;
+    }
+    .heroCardBtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .btn.glass{
+      background:rgba(67, 253, 145, 0.179);
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .miniStats{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    .stat{
+      border:1px solid var(--border);
+      background:rgba(86, 255, 162, 0.09);
+      border-radius:var(--radius2);
+      padding:14px;
+    }
+    .stat b{display:block;font-size:1.05rem}
+    .stat span{display:block;color:var(--muted2);font-size:.86rem;margin-top:4px}
+
+    /* Sections */
+    section{padding:34px 0}
+    .sectionHead{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+    }
+    .sectionHead h3{font-size:1.35rem;letter-spacing:-.2px}
+    .sectionHead p{color:var(--muted);max-width:70ch}
+
+    /* Products grid */
+    .products{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:12px;
+    }
+    .product{
+      grid-column:span 4;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 10px 40px rgba(0,0,0,.22);
+      cursor:pointer;
+      transition:transform .25s ease;
+    }
+    .product:hover{transform:translateY(-6px)}
+    .product .img{
+      aspect-ratio:4/3;
+      overflow:hidden;
+      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+    }
+    .product .img img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform .35s ease;
+    }
+    .product:hover .img img{transform:scale(1.06)}
+    .cardPad{padding:16px}
+    .product h4{font-size:1.05rem;letter-spacing:-.1px}
+    .product p{color:var(--muted);font-size:.92rem;margin-top:6px}
+
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(127, 247, 147, 0.149);
+      color:var(--muted);
+      font-size:.82rem;margin-top:10px;width:fit-content;
+    }
+
+    /* Univers (compact, visuel, peu de place) */
+    .universGrid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:12px;
+    }
+    .uCard{
+      grid-column:span 4;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:rgba(255,255,255,.05);
+      cursor:pointer;
+      box-shadow:0 10px 40px rgba(0,0,0,.18);
+      transition:transform .25s ease;
+      position:relative;
+      min-height:140px;
+    }
+    .uCard:hover{transform:translateY(-6px)}
+    .uImg{
+      position:absolute; inset:0;
+      background-size:cover;
+      background-position:center;
+      filter:saturate(1.02);
+      transform:scale(1.02);
+    }
+    .uShade{
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    }
+    .uLabel{
+      position:absolute; left:16px; right:16px; bottom:14px;
+      z-index:2;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .uLabel b{
+      font-size:1rem;
+      letter-spacing:-.1px;
+      color: #fff;
+      
+    }
+    .uLabel span{
+      font-size:.8rem;
+      color:rgba(255, 255, 255, 0.837);
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0, 0, 0, 0.33);
+      padding:6px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+
+    /* Visit */
+    .visit{
+      border:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(183,247,209,.14), rgba(255,233,166,.10));
+      border-radius:var(--radius);
+      padding:18px;
+    }
+    .visitGrid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .map{
+      border:1px solid rgba(0,0,0,.18);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:rgba(0,0,0,.15);
+      min-height:260px;
+    }
+    .map iframe{display:block;width:100%;height:100%;min-height:260px;border:0}
+
+    .contactCards{display:grid;gap:12px}
+    .contactCard{
+      background:rgba(255,255,255,.92);
+      color:#111;
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,0,0,.25);
+    }
+    .contactCard b{display:block;color:#000}
+    .contactCard small{display:block;color:#333;margin-top:6px}
+    .contactCard span{font-weight:700}
+
+    /* Footer premium */
+    .footer{
+      border-top:1px solid var(--border);
+      padding:28px 0 34px;
+      margin-top:26px;
+      color:var(--muted2);
+    }
+    .footerInner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .footerInner a{
+      color:var(--muted2);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .footerInner a:hover{
+      color:var(--text);
+      border-color:var(--border);
+      background:rgba(255,255,255,.04);
+    }
+    .signature{
+      display:inline-block;
+      margin-top:6px;
+      font-size:.78rem;
+      font-weight:600;
+      color:rgba(0, 0, 0, 0.45);
+      letter-spacing:.6px;
+      text-transform:uppercase;
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;inset:0;
+      background:rgba(0,0,0,.92);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:100;
+      padding:18px;
+    }
+    .lightbox.active{display:flex}
+    .lightbox img{
+      max-width:min(1100px, 96vw);
+      max-height:92vh;
+      border-radius:18px;
+      box-shadow:0 30px 90px rgba(0,0,0,.55);
+    }
+    .lightboxClose{
+      position:absolute;
+      top:16px;right:16px;
+      width:44px;height:44px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      font-size:18px;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+    }
+    .lightboxClose:hover{background:rgba(255,255,255,.14)}
+
+   /* Avis clients */
+.reviews{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:12px;
+}
+
+.reviewCard{
+  grid-column:span 4;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 10px 40px rgba(0,0,0,.22);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.reviewHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.reviewName{
+  font-weight:700;
+  font-size:.95rem;
+}
+
+.reviewSource{
+  font-size:.75rem;
+  color:var(--muted2);
+}
+
+.stars{
+  color:#FFD166;
+  font-size:.9rem;
+  letter-spacing:1px;
+}
+
+.reviewText{
+  color:var(--muted);
+  font-size:.95rem;
+  line-height:1.5;
+}
+
+.reviewFooter{
+  font-size:.75rem;
+  color:var(--muted2);
+  margin-top:auto;
+}
+
+@media (max-width:940px){
+  .reviewCard{grid-column:span 6}
+}
+@media (max-width:720px){
+  .reviewCard{grid-column:span 12}
+}
+
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .logoWrap{width:64px;height:64px}
+    }
+
+    @media (max-width: 940px){
+      .heroGrid{grid-template-columns:1fr}
+      .visitGrid{grid-template-columns:1fr}
+      .product{grid-column:span 6}
+      .uCard{grid-column:span 6}
+      .car-text{max-width:560px}
+    }
+
+    @media (max-width: 720px){
+      .links{display:none}
+      .burger{display:inline-flex}
+      .miniStats{grid-template-columns:1fr}
+      .product{grid-column:span 12}
+      .uCard{grid-column:span 12}
+      .heroLeft{padding:22px}
+      .heroCardContent h3{font-size:1.2rem}
+      .car-btn{display:none} /* swipe sur mobile */
+      .car-overlay{
+        background:linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.78) 70%);
+        align-items:flex-end;
+        padding:24px 0;
+      }
+    }
+
+    @media (max-width: 480px){
+      .logoWrap{width:56px;height:56px}
+      .carousel{height:320px;}
+      .car-text p{font-size:.95rem}
+      .btn{padding:10px 12px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
+    }
+/* Social brand colors – premium & subtil */
+
+.footerInner a.facebook:hover{
+  color:#1877F2; /* Facebook blue */
+  border-color:rgba(24,119,242,.4);
+  background:rgba(24,119,242,.08);
+}
+
+.footerInner a.instagram:hover{
+  color:#E4405F; /* Instagram pink */
+  border-color:rgba(228,64,95,.4);
+  background:rgba(228,64,95,.08);
+}
+
+/* Social links — brand color by default */
+
+.footerInner a.facebook{
+  color:#1877F2; /* Facebook */
+}
+
+.footerInner a.instagram{
+  color:#E4405F; /* Instagram */
+}
+
+/* Hover: discret & premium */
+.footerInner a.facebook:hover{
+  color:#145dbf;
+  background:rgba(24,119,242,.06);
+  border-color:rgba(24,119,242,.25);
+}
+
+.footerInner a.instagram:hover{
+  color:#c73753;
+  background:rgba(228,64,95,.06);
+  border-color:rgba(228,64,95,.25);
+}
+
+/* Section promo – moderne & premium */
+
+.promo{
+  padding:10px 0 26px;
+}
+
+.promoBox{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+  border:1px solid var(--border);
+  background:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.promoText{
+  padding:28px;
+}
+
+.promoBadge{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(183,247,209,.35);
+  background:rgba(183,247,209,.12);
+  font-weight:600;
+  font-size:.85rem;
+}
+
+.promoText h3{
+  margin-top:14px;
+  font-size:1.55rem;
+  letter-spacing:-.2px;
+}
+
+.promoText p{
+  margin-top:10px;
+  color:var(--muted);
+  max-width:60ch;
+}
+
+.promoActions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.promoVisual{
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.18)),
+    url("assets/slide2.jpg") center/cover no-repeat;
+}
+
+/* Responsive */
+@media (max-width: 940px){
+  .promoBox{
+    grid-template-columns:1fr;
+  }
+
+  .promoVisual{
+    min-height:220px;
+  }
+}
+
+
+
+/* Animation promo */
+
+.promoBox{
+  opacity:0;
+  transform:translateY(22px);
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+}
+
+.promoBox.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.promoVisual{
+  transform:scale(1.05);
+  transition:transform .9s ease;
+}
+
+.promoBox.is-visible .promoVisual{
+  transform:scale(1);
+}
+
+/* Respect accessibilité */
+@media (prefers-reduced-motion: reduce){
+  .promoBox,
+  .promoVisual{
+    transition:none;
+    transform:none;
+    opacity:1;
+  }
+}
+
+
+
+/* Animation Univers – apparition progressive */
+
+.uCard{
+  opacity:0;
+  transform:translateY(26px);
+  transition:
+    opacity .6s ease,
+    transform .6s ease;
+}
+
+.uCard.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce){
+  .uCard{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}
+/* Hover conservé après animation */
+
+.uCard.is-visible:hover{
+  transform:translateY(-6px);
+}
+
+
+
+  </style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Accueil Nour Al Hidaya">
+        <div class="logoWrap" aria-hidden="true">
+          <img src="assets/logo.png" alt="Logo Nour Al Hidaya" style="width:100%;height:100%;object-fit:contain">
+        </div>
+        <div>
+          <h1>Nour Al Hidaya</h1>
+          <span>Librairie à Trappes</span>
+        </div>
+      </a>
+
+      <nav class="links" aria-label="Navigation">
+        <a href="#phares">Produits</a>
+        <a href="#univers">Univers</a>
+        <a href="#venir">Accès</a>
+      </nav>
+
+      <div class="ctaRow">
+        <a class="btn" href="#venir">Venir en boutique</a>
+        <a class="btn primary" href="#phares">Découvrir</a>
+        <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+
+    <div class="drawer" id="drawer" aria-label="Menu mobile">
+      <a href="#phares">Produits</a>
+      <a href="#univers">Univers</a>
+      <a href="#venir">Accès</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </div>
+</header>
+
+<section class="carousel" aria-label="Galerie de la librairie">
+  <div class="carousel-track" id="track">
+    <div class="slide" style="background-image:url('assets/slide1.jpg')"></div>
+    <div class="slide" style="background-image:url('assets/slide2.jpg')"></div>
+    <div class="slide" style="background-image:url('assets/slide3.jpg')"></div>
+    <div class="slide" style="background-image:url('assets/slide4.jpg')"></div>
+    <div class="slide" style="background-image:url('assets/slide5.jpg')"></div>
+  </div>
+
+  <button class="car-btn prev" id="prev" aria-label="Image précédente">‹</button>
+  <button class="car-btn next" id="next" aria-label="Image suivante">›</button>
+
+  <div class="car-dots" id="dots" aria-label="Navigation du carousel"></div>
+
+  <div class="car-overlay">
+    <div class="container">
+      <div class="car-text">
+        <span class="car-pill">Nour Al Hidaya • Trappes</span>
+        <h2>Une librairie aux mille trésors</h2>
+        <p>Faites défiler, découvrez l’ambiance, puis venez explorer toute la sélection en boutique.</p>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="top">
+  <div class="container">
+
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="heroLeft">
+          <div class="badge">Sélection soignée • Conseils en boutique</div>
+          <h2>Une librairie aux mille trésors, à explorer sur place.</h2>
+          <p>
+            Ici, vous avez un aperçu. En boutique, c’est une vraie caverne de découvertes :
+            ouvrages, senteurs, cadeaux et trouvailles choisies avec soin.
+            Venez flâner et trouver ce qui vous correspond.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn primary" href="#venir">Voir l’itinéraire</a>
+            <a class="btn" href="#phares">Voir les produits phares</a>
+          </div>
+
+          <div class="chips" aria-label="Points forts">
+            <div class="chip">Accueil & conseils</div>
+            <div class="chip">Idées cadeaux</div>
+            <div class="chip">Large choix en magasin</div>
+            <div class="chip">Découvertes</div>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <div class="photoCard">
+            <div class="heroCardBg" aria-hidden="true"></div>
+            <div class="heroCardContent">
+              <div class="loc">📍 Trappes</div>
+              <h3>Une librairie aux mille trésors</h3>
+              <p>
+                Poussez la porte et laissez-vous surprendre.
+                Entre ouvrages précieux, senteurs raffinées et objets choisis avec soin,
+                chaque recoin révèle une nouvelle découverte.
+              </p>
+              <div class="heroCardBtns">
+                <a class="btn glass" target="_blank"
+                   href="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes">
+                  Voir l’itinéraire
+                </a>
+                <a class="btn glass" href="#phares">Voir la sélection</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="miniStats">
+            <div class="stat">
+              <b>Photos cliquables</b>
+              <span>Ouvrez les images en grand</span>
+            </div>
+            <div class="stat">
+              <b>Encore plus en boutique</b>
+              <span>Le vrai choix est sur place</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo">
+  <div class="container">
+    <div class="promoBox">
+      <div class="promoText">
+        <span class="promoBadge">À découvrir en boutique</span>
+        <h3>Nouveautés & idées cadeaux</h3>
+        <p>
+          Chaque semaine, de nouvelles références arrivent en rayon :
+          ouvrages, senteurs, accessoires et idées cadeaux soigneusement sélectionnés.
+        </p>
+
+        <div class="promoActions">
+          <a href="#phares" class="btn primary">Voir la sélection</a>
+          <a href="#venir" class="btn">Venir en boutique</a>
+        </div>
+      </div>
+
+      <div class="promoVisual" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+
+    <section id="phares">
+      <div class="sectionHead">
+        <div>
+          <h3>Un large choix d'articles</h3>
+          <p>Cliquez sur une carte pour voir l’image en grand. Et venez découvrir tout le reste en boutique.</p>
+        </div>
+        <a class="btn" href="#venir">Adresse & horaires</a>
+      </div>
+
+      <div class="products">
+        <article class="product zoomable" data-img="assets/p1.jpg" role="button" tabindex="0" aria-label="Voir l'image Corans et livres en grand">
+          <div class="img"><img src="assets/p1.jpg" alt="Corans et livres"></div>
+          <div class="cardPad">
+            <h4>Corans & livres</h4>
+            <p>Corans, livres de sciences religieuses, ouvrages d’histoire, romans et lectures pour tous les niveaux sont disponibles directement en magasin.</p>
+            <div class="pill">Voir en grand</div>
+          </div>
+        </article>
+
+        <article class="product zoomable" data-img="assets/p2.jpg" role="button" tabindex="0" aria-label="Voir l'image Parfums et bien-être en grand">
+          <div class="img"><img src="assets/p2.jpg" alt="Parfums et bien-être"></div>
+          <div class="cardPad">
+            <h4>Parfums & bien-être</h4>
+            <p>Parfums, musk, huiles parfumées et miel, à découvrir et tester directement en boutique.</p>
+            <div class="pill">Voir en grand</div>
+          </div>
+        </article>
+
+        <article class="product zoomable" data-img="assets/p3.jpg" role="button" tabindex="0" aria-label="Voir l'image Articles et vêtements en grand">
+          <div class="img"><img src="assets/p3.jpg" alt="Articles et vêtements"></div>
+          <div class="cardPad">
+            <h4>Articles & vêtements</h4>
+            <p>Tapis de prière, tasbih, encens et vêtements pour femmes, hommes et enfants, à découvrir directement en boutique.</p>
+            <div class="pill">Voir en grand</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- NOUVELLE SECTION : met en valeur sans prendre trop de place -->
+    <section id="univers">
+      <div class="sectionHead">
+        <div>
+          <h3>Univers de la librairie</h3>
+          <p>Un aperçu visuel de ce que vous trouverez sur place — cliquez pour voir les photos en grand.</p>
+        </div>
+      </div>
+
+      <div class="universGrid">
+        <div class="uCard zoomable" data-img="assets/slide3.jpg" role="button" tabindex="0" aria-label="Voir Vêtements femme en grand">
+          <div class="uImg" style="background-image:url('assets/slide3.jpg')"></div>
+          <div class="uShade"></div>
+          <div class="uLabel"><b>Femme</b><span>Vêtements</span></div>
+        </div>
+
+        <div class="uCard zoomable" data-img="assets/slide2.jpg" role="button" tabindex="0" aria-label="Voir Vêtements homme en grand">
+          <div class="uImg" style="background-image:url('assets/slide2.jpg')"></div>
+          <div class="uShade"></div>
+          <div class="uLabel"><b>Homme</b><span>Vêtements</span></div>
+        </div>
+
+        <div class="uCard zoomable" data-img="assets/slide4.jpg" role="button" tabindex="0" aria-label="Voir Enfant en grand">
+          <div class="uImg" style="background-image:url('assets/slide4.jpg')"></div>
+          <div class="uShade"></div>
+          <div class="uLabel"><b>Enfant</b><span>Lectures</span></div>
+        </div>
+
+        <div class="uCard zoomable" data-img="assets/p2.jpg" role="button" tabindex="0" aria-label="Voir Parfums et senteurs en grand">
+          <div class="uImg" style="background-image:url('assets/p2.jpg')"></div>
+          <div class="uShade"></div>
+          <div class="uLabel"><b>Parfums</b><span>Senteurs</span></div>
+        </div>
+
+        <div class="uCard zoomable" data-img="assets/slide5.jpg" role="button" tabindex="0" aria-label="Voir Trésors et accessoires en grand">
+          <div class="uImg" style="background-image:url('assets/slide5.jpg')"></div>
+          <div class="uShade"></div>
+          <div class="uLabel"><b>Encens</b><span>Accessoires</span></div>
+        </div>
+
+        <div class="uCard zoomable" data-img="assets/slide1.jpg" role="button" tabindex="0" aria-label="Voir Livres et rayons en grand">
+          <div class="uImg" style="background-image:url('assets/slide1.jpg')"></div>
+          <div class="uShade"></div>
+          <div class="uLabel"><b>Livres</b><span>Rayons</span></div>
+        </div>
+      </div>
+    </section>
+
+<section id="avis">
+  <div class="sectionHead">
+    <div>
+      <h3>Avis clients</h3>
+      <p>⭐ 4,7 / 5 — 218 avis Google. Ce que disent nos clients après leur visite.</p>
+    </div>
+    <a class="btn" target="_blank"
+       href="https://www.google.com/search?sca_esv=27bf74d1c97a8942&q=nour+al+hidaya+trapppes&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s04D3SwwF-_df957BkiVxDRNhP4MXL4t63Vjl8BnNRnc5iONvb600Y-GfhRhSZNVM2Yx41Y%3D&uds=AOm0WdEpNcp6pEjRdta6g1dVDwXuY1YdXYhHKndPkK7THIGApRjcewWmE3e1WuFW8oLmQ2KscKOVZFNGm0Gn-SRVFONppZEowiAMcuT6ycM0N5c9Mxxub_uWOj-rJb89QfUumhh37C3A&sa=X&ved=2ahUKEwiGvYXdzcSRAxV-KvsDHfjsMYUQ3PALegQIGRAE&biw=1536&bih=730&dpr=1.25">
+      Voir tous les avis
+    </a>
+  </div>
+
+  <div class="reviews">
+    <div class="reviewCard">
+      <div class="reviewHead">
+        <div>
+          <div class="reviewName">Client Google</div>
+          <div class="reviewSource">Avis Google</div>
+        </div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="reviewText">
+        « Excellente librairie, on s’y sent apaisé et le gérant est toujours avec le sourire et de bons conseils. Qu’Allah lui mette davantage la baraka. »
+      </div>
+      <div class="reviewFooter">Visite il y a 2 mois</div>
+    </div>
+
+    <div class="reviewCard">
+      <div class="reviewHead">
+        <div>
+          <div class="reviewName">Client Google</div>
+          <div class="reviewSource">Avis Google</div>
+        </div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="reviewText">
+        « Très agréable, heureusement que nous avons cette boutique très enrichissante. Bonne continuation. »
+      </div>
+      <div class="reviewFooter">Visite il y a 6 mois</div>
+    </div>
+
+    <div class="reviewCard">
+      <div class="reviewHead">
+        <div>
+          <div class="reviewName">Client Google</div>
+          <div class="reviewSource">Avis Google</div>
+        </div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="reviewText">
+        « Une mine d’or. Toujours bien accueilli et bien conseillé. »
+      </div>
+      <div class="reviewFooter">Visite il y a 3 mois</div>
+    </div>
+  </div>
+</section>
+
+
+    <section id="venir">
+      <div class="visit">
+        <div class="sectionHead" style="margin-bottom:10px">
+          <div>
+            <h3>Infos & accès</h3>
+            <p>Retrouvez-nous en boutique. Pour une demande précise, contactez-nous par téléphone.</p>
+          </div>
+        </div>
+
+        <div class="visitGrid">
+          <div class="map">
+            <iframe
+              title="Carte Google Maps Nour Al Hidaya"
+              src="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <div class="contactCards">
+            <div class="contactCard">
+              <b>Adresse</b>
+              <small>1 Imp. Julian Grimau, 78190 Trappes</small>
+            </div>
+
+            <div class="contactCard">
+              <b>Horaires</b>
+              <small>Mardi : 10h30–13h00, 14h30–19h00</small>
+              <small>Mercredi : 10h30–13h00, 14h30–19h00</small>
+              <small>Jeudi : 10h30–13h00, 14h30–19h30</small>
+              <small>Vendredi : 10h30–12h30, 14h30–19h30</small>
+              <small>Samedi : 10h30–13h00, 14h30–19h30</small>
+              <small>Dimanche : 10h30–13h00, 14h30–19h30</small>
+              <small>Lundi : Fermé</small>
+            </div>
+
+            <div class="contactCard">
+              <b>Contact</b>
+              <small>Téléphone : <span>01 30 50 17 12</span></small>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn primary" target="_blank"
+                 href="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes">
+                Itinéraire
+              </a>
+              <a class="btn" href="mentions-legales.html">Mentions légales</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footerInner">
+        <div>
+          © <span id="year"></span> Nour Al Hidaya — Librairie<br>
+          <span class="signature">BySeym</span>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="#venir">Contact & accès</a>
+          <a href="https://www.facebook.com/NourAlHidaya78190/?locale=fr_FR" target="_blank" class="social facebook">
+  Facebook
+</a>
+<a href="https://www.instagram.com/maktabahanafi/" target="_blank" class="social instagram">
+  Instagram
+</a>
+
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightboxClose" id="lbClose" aria-label="Fermer">✕</button>
+  <img id="lbImg" alt="Image en grand">
+</div>
+
+<script>
+  // Année auto
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Menu mobile
+  (function(){
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+    if(!burger || !drawer) return;
+    burger.addEventListener('click', () => drawer.classList.toggle('open'));
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+  })();
+
+  // Lightbox (Produits + Univers)
+  (function(){
+    const box = document.getElementById('lightbox');
+    const img = document.getElementById('lbImg');
+    const closeBtn = document.getElementById('lbClose');
+    const cards = document.querySelectorAll('.zoomable[data-img]');
+
+    function open(src){
+      img.src = src;
+      box.classList.add('active');
+      box.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      box.classList.remove('active');
+      box.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      img.src = '';
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => open(card.getAttribute('data-img')));
+      card.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open(card.getAttribute('data-img'));
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', (e) => { if(e.target === box) close(); });
+    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+  })();
+
+  // Carousel
+  (function(){
+    const track = document.getElementById('track');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const dotsWrap = document.getElementById('dots');
+
+    if(!track) return;
+    const slides = Array.from(track.children);
+    const total = slides.length;
+
+    let i = 0;
+    let timer = null;
+    let startX = 0;
+    let dx = 0;
+    let paused = false;
+
+    function renderDots(){
+      dotsWrap.innerHTML = '';
+      slides.forEach((_, idx) => {
+        const d = document.createElement('button');
+        d.className = 'dot' + (idx === i ? ' active' : '');
+        d.type = 'button';
+        d.setAttribute('aria-label', 'Aller à l’image ' + (idx+1));
+        d.addEventListener('click', () => go(idx));
+        dotsWrap.appendChild(d);
+      });
+    }
+
+    function go(index){
+      i = (index + total) % total;
+      track.style.transform = `translateX(${-i * 100}%)`;
+      renderDots();
+    }
+
+    function nextSlide(){ go(i + 1); }
+    function prevSlide(){ go(i - 1); }
+
+    prev?.addEventListener('click', prevSlide);
+    next?.addEventListener('click', nextSlide);
+
+    function start(){
+      stop();
+      timer = setInterval(() => {
+        if(!paused) nextSlide();
+      }, 5000);
+    }
+    function stop(){
+      if(timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // Pause au survol
+    const root = track.closest('.carousel');
+    root?.addEventListener('mouseenter', () => paused = true);
+    root?.addEventListener('mouseleave', () => paused = false);
+
+    // Swipe mobile
+    root?.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      dx = 0;
+    }, {passive:true});
+
+    root?.addEventListener('touchmove', (e) => {
+      dx = e.touches[0].clientX - startX;
+    }, {passive:true});
+
+    root?.addEventListener('touchend', () => {
+      if(Math.abs(dx) > 45){
+        dx < 0 ? nextSlide() : prevSlide();
+      }
+    });
+
+    go(0);
+    start();
+  })();
+
+  
+</script>
+
+<script>
+  // Animation promo au scroll — rejouable
+  (function(){
+    const promo = document.querySelector('.promoBox');
+    if(!promo) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if(entry.isIntersecting){
+          promo.classList.add('is-visible');
+        } else {
+          promo.classList.remove('is-visible');
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(promo);
+  })();
+</script>
+
+<script>
+  // Animation Univers – cartes en cascade
+  (function(){
+    const cards = document.querySelectorAll('.universGrid .uCard');
+    if(!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          const card = entry.target;
+
+          if(entry.isIntersecting){
+            const index = [...cards].indexOf(card);
+            card.style.transitionDelay = `${index * 90}ms`;
+            card.classList.add('is-visible');
+          } else {
+            card.classList.remove('is-visible');
+            card.style.transitionDelay = '0ms';
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    cards.forEach(card => observer.observe(card));
+  })();
+</script>
+
+
+</body>
+</html>
