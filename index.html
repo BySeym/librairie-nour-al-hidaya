@@ -860,6 +860,19 @@
   }
 }
 
+.byseym{
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.45);
+  transition:color .25s ease;
+}
+
+.byseym:hover{
+  color:#E4405F; /* Instagram */
+}
+
 
   </style>
 </head>
@@ -1190,7 +1203,11 @@
 
             <div class="contactCard">
               <b>Contact</b>
-              <small>Téléphone : <span>01 30 50 17 12</span></small>
+              <small>
+  Téléphone :
+  <a href="tel:0130501712"><span>01 30 50 17 12</span></a>
+</small>
+
             </div>
 
             <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -1208,9 +1225,15 @@
     <footer class="footer">
       <div class="footerInner">
         <div>
-          © <span id="year"></span> Nour Al Hidaya — Librairie<br>
-          <span class="signature">BySeym</span>
-        </div>
+  © <span id="year"></span> Nour Al Hidaya — Librairie<br>
+  <a href="https://www.instagram.com/byseym_/" 
+     target="_blank" 
+     rel="noopener"
+     class="byseym">
+    BySeym
+  </a>
+</div>
+
 
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a href="mentions-legales.html">Mentions légales</a>
