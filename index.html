@@ -65,7 +65,7 @@
       font-size:.92rem;color:var(--muted);
       padding:10px 10px;border-radius:12px;
     }
-    .links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .links a:hover{background:rgba(130, 250, 170, 0.107);color:var(--text)}
 
     .ctaRow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     .btn{
@@ -175,10 +175,10 @@
     .dot{
       width:8px;height:8px;border-radius:999px;
       border:1px solid rgba(255,255,255,.35);
-      background:rgba(255,255,255,.18);
+      background:rgba(42, 42, 42, 0.18);
       cursor:pointer;
     }
-    .dot.active{background:rgba(255,255,255,.9)}
+    .dot.active{background:rgba(0, 0, 0, 0.714)}
 
     /* Hero */
     .hero{padding:52px 0 22px}
@@ -254,7 +254,7 @@
       width:fit-content;
       padding:8px 12px;border-radius:999px;
       border:1px solid rgba(255,255,255,.18);
-      background:rgba(0,0,0,.25);
+      background:rgba(138, 251, 181, 0.25);
     }
     .heroCardContent h3{
       font-size:1.35rem;
@@ -766,6 +766,101 @@
 
 
 
+/* Toast social */
+
+.toast{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  max-width:320px;
+  width:calc(100% - 44px);
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);
+  border-radius:18px;
+  box-shadow:0 18px 40px rgba(0,0,0,.28);
+  padding:18px;
+  z-index:120;
+  opacity:0;
+  transform:translateY(18px);
+  pointer-events:none;
+  transition:
+    opacity .4s ease,
+    transform .4s ease;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+.toastClose{
+  position:absolute;
+  top:10px;
+  right:10px;
+  border:0;
+  background:transparent;
+  font-size:16px;
+  cursor:pointer;
+  color:var(--muted2);
+}
+
+.toastContent b{
+  font-size:1rem;
+}
+
+.toastContent p{
+  margin-top:6px;
+  font-size:.9rem;
+  color:var(--muted);
+}
+
+.toastActions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.toastBtn{
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:.82rem;
+  font-weight:600;
+  border:1px solid var(--border);
+  text-decoration:none;
+}
+
+/* Brand */
+.toastBtn.ig{
+  color:#E4405F;
+  border-color:rgba(228,64,95,.35);
+  background:rgba(228,64,95,.08);
+}
+
+.toastBtn.fb{
+  color:#1877F2;
+  border-color:rgba(24,119,242,.35);
+  background:rgba(24,119,242,.08);
+}
+
+.toastBtn.ghost{
+  color:var(--text);
+  background:rgba(0,0,0,.04);
+}
+
+/* Mobile */
+@media (max-width:480px){
+  .toast{
+    bottom:14px;
+    right:14px;
+    left:14px;
+    width:auto;
+  }
+}
+
+
   </style>
 </head>
 
@@ -824,7 +919,7 @@
       <div class="car-text">
         <span class="car-pill">Nour Al Hidaya • Trappes</span>
         <h2>Une librairie aux mille trésors</h2>
-        <p>Faites défiler, découvrez l’ambiance, puis venez explorer toute la sélection en boutique.</p>
+        
         
       </div>
     </div>
@@ -904,10 +999,7 @@
           ouvrages, senteurs, accessoires et idées cadeaux soigneusement sélectionnés.
         </p>
 
-        <div class="promoActions">
-          <a href="#phares" class="btn primary">Voir la sélection</a>
-          <a href="#venir" class="btn">Venir en boutique</a>
-        </div>
+       
       </div>
 
       <div class="promoVisual" aria-hidden="true"></div>
@@ -1319,6 +1411,52 @@
     cards.forEach(card => observer.observe(card));
   })();
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toast = document.getElementById('socialToast');
+    if (!toast) return;
+
+    const closeBtn = toast.querySelector('.toastClose');
+
+    // Affichage après 3 secondes
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 3000);
+
+    // Fermeture
+    closeBtn.addEventListener('click', () => {
+      toast.classList.remove('show');
+    });
+  });
+</script>
+
+
+
+
+
+<div class="toast" id="socialToast" role="dialog" aria-live="polite">
+  <button class="toastClose" aria-label="Fermer">✕</button>
+
+  <div class="toastContent">
+    <b>Restons connectés 🤖</b>
+    <p>
+      Suivez-nous sur les réseaux et partagez votre avis,
+      cela nous aide énormément.🙏
+    </p>
+
+    <div class="toastActions">
+      <a href="https://www.instagram.com/maktabahanafi/" target="_blank" class="toastBtn ig">
+        Instagram
+      </a>
+      <a href="https://www.facebook.com/NourAlHidaya78190/" target="_blank" class="toastBtn fb">
+        Facebook
+      </a>
+      <a href="https://www.google.com/search?q=nour+al+hidaya+trappes+avis" target="_blank" class="toastBtn ghost">
+        Laisser un avis
+      </a>
+    </div>
+  </div>
+</div>
 
 
 </body>
