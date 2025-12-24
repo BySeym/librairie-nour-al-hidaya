@@ -1,5 +1,20 @@
 {
-  "hero_title": "Une librairie aux mille trésors",
-  "hero_text": "Ouvrages, senteurs et découvertes à explorer en boutique.",
-  "hero_image": "assets/hero.jpg"
+  "hero": {
+    "title": "Une librairie aux mille trésors, à explorer sur place.",
+    "text": "Ici, vous avez un aperçu. En boutique, c’est une vraie caverne de découvertes.",
+    "image": "assets/hero.jpg"
+  },
+
+  "promo": {
+    "title": "Nouveautés & idées cadeaux",
+    "text": "Chaque semaine, de nouvelles références arrivent en rayon."
+  },
+
+  "carousel": [
+    "assets/slide1.jpg",
+    "assets/slide2.jpg",
+    "assets/slide3.jpg",
+    "assets/slide4.jpg",
+    "assets/slide5.jpg"
+  ]
 }

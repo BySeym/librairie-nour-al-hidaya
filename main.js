@@ -186,3 +186,28 @@
       toast.classList.remove('show');
     });
   });
+
+
+  fetch('content/home.json')
+  .then(res => res.json())
+  .then(data => {
+    // HERO
+    document.getElementById('hero-title').textContent = data.hero.title;
+    document.getElementById('hero-text').textContent = data.hero.text;
+
+    // PROMO
+    document.getElementById('promo-title').textContent = data.promo.title;
+    document.getElementById('promo-text').textContent = data.promo.text;
+
+    // CAROUSEL
+    const track = document.getElementById('track');
+    track.innerHTML = '';
+
+    data.carousel.forEach(img => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      slide.style.backgroundImage = `url('${img}')`;
+      track.appendChild(slide);
+    });
+  })
+  .catch(err => console.error('Erreur chargement contenu', err));
