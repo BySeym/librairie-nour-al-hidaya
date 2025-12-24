@@ -2,17 +2,16 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "assets"
+public_folder: "/assets"
 
 collections:
-  - name: "site"
-    label: "Contenu du site"
+  - name: "homepage"
+    label: "Page d’accueil"
     files:
-      - name: "homepage"
-        label: "Page d’accueil"
-        file: "content/homepage.json"
+      - file: "admin/content/homepage.json"
+        label: "Contenu accueil"
+        name: "homepage"
         fields:
           - { label: "Titre hero", name: "hero_title", widget: "string" }
           - { label: "Texte hero", name: "hero_text", widget: "text" }
-          - { label: "Image hero", name: "hero_image", widget: "image" }
