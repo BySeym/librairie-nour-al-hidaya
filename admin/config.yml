@@ -30,4 +30,6 @@ collections:
           - label: "Carousel"
             name: "carousel"
             widget: "list"
+            required: false
+
             field: { label: "Image", name: "image", widget: "image" }
