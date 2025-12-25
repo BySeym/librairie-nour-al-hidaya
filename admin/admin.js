@@ -1,29 +1,12 @@
-const form = document.getElementById("loginForm");
-const error = document.getElementById("error");
+const token = localStorage.getItem("admin_token");
 
-form?.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (!token) {
+  window.location.href = "login.html";
+}
 
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+const logoutBtn = document.getElementById("logout");
 
-  try {
-    const res = await fetch("http://localhost:3000/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password })
-    });
-
-    if (!res.ok) {
-      error.textContent = "Identifiants incorrects";
-      return;
-    }
-
-    const data = await res.json();
-    localStorage.setItem("admin_token", data.token);
-    window.location.href = "admin.html";
-
-  } catch (err) {
-    error.textContent = "Erreur serveur";
-  }
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("admin_token");
+  window.location.href = "login.html";
 });
