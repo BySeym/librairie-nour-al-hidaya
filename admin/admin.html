@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <div class="center">
+    <div class="card">
+      <h2>Bienvenue 👋</h2>
+      <p>Panneau admin prêt.</p>
+      <button id="logout">Déconnexion</button>
+    </div>
+  </div>
+
+  <script>
+    if (!localStorage.getItem("admin_token")) {
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("logout").onclick = () => {
+      localStorage.removeItem("admin_token");
+      window.location.href = "login.html";
+    };
+  </script>
+
+</body>
+</html>
