@@ -46,166 +46,111 @@
     window.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
   })();
 
-  // Carousel
-  (function(){
-    const track = document.getElementById('track');
-    const prev = document.getElementById('prev');
-    const next = document.getElementById('next');
-    const dotsWrap = document.getElementById('dots');
+  // =======================
+// CAROUSEL (corrigé)
+// =======================
 
-    if(!track) return;
-    const slides = Array.from(track.children);
-    const total = slides.length;
+function initCarousel() {
+  const track = document.getElementById('track');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const dotsWrap = document.getElementById('dots');
 
-    let i = 0;
-    let timer = null;
-    let startX = 0;
-    let dx = 0;
-    let paused = false;
+  if (!track) return;
 
-    function renderDots(){
-      dotsWrap.innerHTML = '';
-      slides.forEach((_, idx) => {
-        const d = document.createElement('button');
-        d.className = 'dot' + (idx === i ? ' active' : '');
-        d.type = 'button';
-        d.setAttribute('aria-label', 'Aller à l’image ' + (idx+1));
-        d.addEventListener('click', () => go(idx));
-        dotsWrap.appendChild(d);
-      });
-    }
+  const slides = Array.from(track.children);
+  const total = slides.length;
+  if (total === 0) return;
 
-    function go(index){
-      i = (index + total) % total;
-      track.style.transform = `translateX(${-i * 100}%)`;
-      renderDots();
-    }
+  let i = 0;
+  let timer = null;
+  let startX = 0;
+  let dx = 0;
+  let paused = false;
 
-    function nextSlide(){ go(i + 1); }
-    function prevSlide(){ go(i - 1); }
-
-    prev?.addEventListener('click', prevSlide);
-    next?.addEventListener('click', nextSlide);
-
-    function start(){
-      stop();
-      timer = setInterval(() => {
-        if(!paused) nextSlide();
-      }, 5000);
-    }
-    function stop(){
-      if(timer) clearInterval(timer);
-      timer = null;
-    }
-
-    // Pause au survol
-    const root = track.closest('.carousel');
-    root?.addEventListener('mouseenter', () => paused = true);
-    root?.addEventListener('mouseleave', () => paused = false);
-
-    // Swipe mobile
-    root?.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      dx = 0;
-    }, {passive:true});
-
-    root?.addEventListener('touchmove', (e) => {
-      dx = e.touches[0].clientX - startX;
-    }, {passive:true});
-
-    root?.addEventListener('touchend', () => {
-      if(Math.abs(dx) > 45){
-        dx < 0 ? nextSlide() : prevSlide();
-      }
+  function renderDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    slides.forEach((_, idx) => {
+      const d = document.createElement('button');
+      d.className = 'dot' + (idx === i ? ' active' : '');
+      d.type = 'button';
+      d.addEventListener('click', () => go(idx));
+      dotsWrap.appendChild(d);
     });
+  }
 
-    go(0);
-    start();
-  })();
+  function go(index) {
+    i = (index + total) % total;
+    track.style.transform = `translateX(${-i * 100}%)`;
+    renderDots();
+  }
 
-  
+  function nextSlide() { go(i + 1); }
+  function prevSlide() { go(i - 1); }
 
-  // Animation promo au scroll — rejouable
-  (function(){
-    const promo = document.querySelector('.promoBox');
-    if(!promo) return;
+  prev?.addEventListener('click', prevSlide);
+  next?.addEventListener('click', nextSlide);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if(entry.isIntersecting){
-          promo.classList.add('is-visible');
-        } else {
-          promo.classList.remove('is-visible');
-        }
-      },
-      { threshold: 0.35 }
-    );
+  function start() {
+    stop();
+    timer = setInterval(() => {
+      if (!paused) nextSlide();
+    }, 5000);
+  }
 
-    observer.observe(promo);
-  })();
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
 
-  // Animation Univers – cartes en cascade
-  (function(){
-    const cards = document.querySelectorAll('.universGrid .uCard');
-    if(!cards.length) return;
+  const root = track.closest('.carousel');
+  root?.addEventListener('mouseenter', () => paused = true);
+  root?.addEventListener('mouseleave', () => paused = false);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          const card = entry.target;
+  root?.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    dx = 0;
+  }, { passive: true });
 
-          if(entry.isIntersecting){
-            const index = [...cards].indexOf(card);
-            card.style.transitionDelay = `${index * 90}ms`;
-            card.classList.add('is-visible');
-          } else {
-            card.classList.remove('is-visible');
-            card.style.transitionDelay = '0ms';
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+  root?.addEventListener('touchmove', e => {
+    dx = e.touches[0].clientX - startX;
+  }, { passive: true });
 
-    cards.forEach(card => observer.observe(card));
-  })();
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const toast = document.getElementById('socialToast');
-    if (!toast) return;
-
-    const closeBtn = toast.querySelector('.toastClose');
-
-    // Affichage après 3 secondes
-    setTimeout(() => {
-      toast.classList.add('show');
-    }, 3000);
-
-    // Fermeture
-    closeBtn.addEventListener('click', () => {
-      toast.classList.remove('show');
-    });
+  root?.addEventListener('touchend', () => {
+    if (Math.abs(dx) > 45) {
+      dx < 0 ? nextSlide() : prevSlide();
+    }
   });
 
+  go(0);
+  start();
+}
 
-  fetch('/content/home.json')
-  .then(response => response.json())
+// =======================
+// FETCH IMAGES CMS
+// =======================
+
+fetch('./content/home.json')
+  .then(res => res.json())
   .then(data => {
     const track = document.getElementById('track');
     if (!track || !Array.isArray(data.carousel)) return;
 
-    // Reset du carousel
     track.innerHTML = '';
 
-    // Génération des slides depuis le CMS
-    data.carousel.forEach(({ image }) => {
-      const slide = document.createElement('div');
-      slide.className = 'slide';
-      slide.style.backgroundImage = `url('${image}')`;
-      track.appendChild(slide);
-    });
+    data.carousel
+      .filter(item => item && typeof item.image === 'string')
+      .forEach(item => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        slide.style.backgroundImage = `url('${item.image}')`;
+        track.appendChild(slide);
+      });
+
+    // 🔥 IMPORTANT : on lance le carousel APRÈS
+    initCarousel();
   })
-  .catch(error => {
-    console.error('Erreur chargement carousel :', error);
-  });
+  .catch(err => console.error('Erreur chargement carousel', err));
+
 
