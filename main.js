@@ -189,18 +189,23 @@
 
 
   fetch('/content/home.json')
-  .then(res => res.json())
+  .then(response => response.json())
   .then(data => {
     const track = document.getElementById('track');
-    if (!track || !data.carousel) return;
+    if (!track || !Array.isArray(data.carousel)) return;
 
+    // Reset du carousel
     track.innerHTML = '';
 
-    data.carousel.forEach(item => {
+    // Génération des slides depuis le CMS
+    data.carousel.forEach(({ image }) => {
       const slide = document.createElement('div');
       slide.className = 'slide';
-      slide.style.backgroundImage = `url('${item.image}')`;
+      slide.style.backgroundImage = `url('${image}')`;
       track.appendChild(slide);
     });
   })
-  .catch(err => console.error('Erreur chargement carousel', err));
+  .catch(error => {
+    console.error('Erreur chargement carousel :', error);
+  });
+
