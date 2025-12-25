@@ -1,7 +1,21 @@
 {
   "carousel": [
+<<<<<<< HEAD
     { "image": "assets/slide1.jpg" },
     { "image": "assets/slide2.jpg" },
     { "image": "assets/slide3.jpg" }
   ]
 }
+=======
+    "/assets/capture-d-écran-2025-08-29-171449.png"
+  ],
+  "hero": {
+    "title": "d",
+    "text": "d"
+  },
+  "promo": {
+    "title": "d",
+    "text": "d"
+  }
+}
+>>>>>>> 8dd77a0230c3b0eed53dc91237bcb1f37522cb71
