@@ -16,6 +16,8 @@ collections:
           - label: "Hero"
             name: "hero"
             widget: "object"
+            required: false
+
             fields:
               - { label: "Titre", name: "title", widget: "string" }
               - { label: "Texte", name: "text", widget: "text" }
@@ -23,6 +25,8 @@ collections:
           - label: "Promo"
             name: "promo"
             widget: "object"
+            required: false
+
             fields:
               - { label: "Titre", name: "title", widget: "string" }
               - { label: "Texte", name: "text", widget: "text" }
