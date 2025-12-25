@@ -53,7 +53,7 @@
   </div>
 </header>
 
-<section class="carousel" aria-label="Galerie de la librairie">
+<!-- <section class="carousel" aria-label="Galerie de la librairie">
   <div class="carousel-track" id="track">
     <div class="slide" style="background-image:url('assets/slide1.jpg')"></div>
     <div class="slide" style="background-image:url('assets/slide2.jpg')"></div>
@@ -77,7 +77,29 @@
       </div>
     </div>
   </div>
+</section> -->
+
+<section class="carousel" aria-label="Galerie de la librairie">
+  <div class="carousel-track" id="track">
+    <!-- Slides injectées dynamiquement depuis home.json -->
+  </div>
+
+  <button class="car-btn prev" id="prev" aria-label="Image précédente">‹</button>
+  <button class="car-btn next" id="next" aria-label="Image suivante">›</button>
+
+  <div class="car-dots" id="dots" aria-label="Navigation du carousel"></div>
+
+  <div class="car-overlay">
+    <div class="container">
+      <div class="car-text">
+        <span class="car-pill">Nour Al Hidaya • Trappes</span>
+        <h2 id="hero-title">Une librairie aux mille trésors</h2>
+        <p id="hero-text"></p>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 <main id="top">
   <div class="container">
