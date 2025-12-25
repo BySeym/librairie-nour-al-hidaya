@@ -46,111 +46,18 @@
     window.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
   })();
 
-  // =======================
-// CAROUSEL (corrigé)
-// =======================
-
-function initCarousel() {
+document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('track');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-  const dotsWrap = document.getElementById('dots');
-
   if (!track) return;
 
-  const slides = Array.from(track.children);
+  const slides = track.children;
   const total = slides.length;
-  if (total === 0) return;
+  if (total <= 1) return;
 
-  let i = 0;
-  let timer = null;
-  let startX = 0;
-  let dx = 0;
-  let paused = false;
+  let index = 0;
 
-  function renderDots() {
-    if (!dotsWrap) return;
-    dotsWrap.innerHTML = '';
-    slides.forEach((_, idx) => {
-      const d = document.createElement('button');
-      d.className = 'dot' + (idx === i ? ' active' : '');
-      d.type = 'button';
-      d.addEventListener('click', () => go(idx));
-      dotsWrap.appendChild(d);
-    });
-  }
-
-  function go(index) {
-    i = (index + total) % total;
-    track.style.transform = `translateX(${-i * 100}%)`;
-    renderDots();
-  }
-
-  function nextSlide() { go(i + 1); }
-  function prevSlide() { go(i - 1); }
-
-  prev?.addEventListener('click', prevSlide);
-  next?.addEventListener('click', nextSlide);
-
-  function start() {
-    stop();
-    timer = setInterval(() => {
-      if (!paused) nextSlide();
-    }, 5000);
-  }
-
-  function stop() {
-    if (timer) clearInterval(timer);
-    timer = null;
-  }
-
-  const root = track.closest('.carousel');
-  root?.addEventListener('mouseenter', () => paused = true);
-  root?.addEventListener('mouseleave', () => paused = false);
-
-  root?.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    dx = 0;
-  }, { passive: true });
-
-  root?.addEventListener('touchmove', e => {
-    dx = e.touches[0].clientX - startX;
-  }, { passive: true });
-
-  root?.addEventListener('touchend', () => {
-    if (Math.abs(dx) > 45) {
-      dx < 0 ? nextSlide() : prevSlide();
-    }
-  });
-
-  go(0);
-  start();
-}
-
-// =======================
-// FETCH IMAGES CMS
-// =======================
-
-fetch('./content/home.json')
-  .then(res => res.json())
-  .then(data => {
-    const track = document.getElementById('track');
-    if (!track || !Array.isArray(data.carousel)) return;
-
-    track.innerHTML = '';
-
-    data.carousel
-      .filter(item => item && typeof item.image === 'string')
-      .forEach(item => {
-        const slide = document.createElement('div');
-        slide.className = 'slide';
-        slide.style.backgroundImage = `url('${item.image}')`;
-        track.appendChild(slide);
-      });
-
-    // 🔥 IMPORTANT : on lance le carousel APRÈS
-    initCarousel();
-  })
-  .catch(err => console.error('Erreur chargement carousel', err));
-
-
+  setInterval(() => {
+    index = (index + 1) % total;
+    track.style.transform = `translateX(${-index * 100}%)`;
+  }, 5000); // 5 secondes
+});
