@@ -1,13 +1,7 @@
 {
   "carousel": [
-    "/assets/p1 - Copie.jpg"
-  ],
-  "hero": {
-    "title": "d",
-    "text": "d"
-  },
-  "promo": {
-    "title": "d",
-    "text": "d"
-  }
+    { "image": "assets/slide1.jpg" },
+    { "image": "assets/slide2.jpg" },
+    { "image": "assets/slide3.jpg" }
+  ]
 }

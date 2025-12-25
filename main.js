@@ -188,27 +188,19 @@
   });
 
 
-  fetch('/admin/content/homepage.json')
-
+  fetch('/content/home.json')
   .then(res => res.json())
   .then(data => {
-    // HERO
-    document.getElementById('hero-title').textContent = data.hero.title;
-    document.getElementById('hero-text').textContent = data.hero.text;
-
-    // PROMO
-    document.getElementById('promo-title').textContent = data.promo.title;
-    document.getElementById('promo-text').textContent = data.promo.text;
-
-    // CAROUSEL
     const track = document.getElementById('track');
+    if (!track || !data.carousel) return;
+
     track.innerHTML = '';
 
-    data.carousel.forEach(img => {
+    data.carousel.forEach(item => {
       const slide = document.createElement('div');
       slide.className = 'slide';
-      slide.style.backgroundImage = `url('${img}')`;
+      slide.style.backgroundImage = `url('${item.image}')`;
       track.appendChild(slide);
     });
   })
-  .catch(err => console.error('Erreur chargement contenu', err));
+  .catch(err => console.error('Erreur chargement carousel', err));
