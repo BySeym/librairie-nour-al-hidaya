@@ -6,18 +6,20 @@ media_folder: "assets"
 public_folder: "/assets"
 
 collections:
-  - name: "carousel"
-    label: "Carousel (Accueil)"
+  - name: "home"
+    label: "Accueil – Carrousel"
     files:
-      - name: "carousel"
-        label: "Images du carousel"
+      - name: "home"
+        label: "Images du carrousel"
         file: "content/home.json"
+        format: "json"
         fields:
-          - label: "Images"
+          - label: "Carrousel"
             name: "carousel"
             widget: "list"
             allow_add: true
-            field:
-              label: "Image"
-              name: "image"
-              widget: "image"
+            summary: "{{fields.image}}"
+            fields:
+              - label: "Image"
+                name: "image"
+                widget: "image"
