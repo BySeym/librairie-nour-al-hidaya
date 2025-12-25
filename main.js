@@ -188,7 +188,8 @@
   });
 
 
-  fetch('content/home.json')
+  fetch('/admin/content/homepage.json')
+
   .then(res => res.json())
   .then(data => {
     // HERO
