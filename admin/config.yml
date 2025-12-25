@@ -6,12 +6,28 @@ media_folder: "assets"
 public_folder: "/assets"
 
 collections:
-  - name: "homepage"
-    label: "Page d’accueil"
+  - name: "home"
+    label: "Page d'accueil"
     files:
-      - file: "admin/content/homepage.json"
+      - name: "home"
         label: "Contenu accueil"
-        name: "homepage"
+        file: "content/home.json"
         fields:
-          - { label: "Titre hero", name: "hero_title", widget: "string" }
-          - { label: "Texte hero", name: "hero_text", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte", name: "text", widget: "text" }
+
+          - label: "Promo"
+            name: "promo"
+            widget: "object"
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte", name: "text", widget: "text" }
+
+          - label: "Carousel"
+            name: "carousel"
+            widget: "list"
+            field: { label: "Image", name: "image", widget: "image" }
