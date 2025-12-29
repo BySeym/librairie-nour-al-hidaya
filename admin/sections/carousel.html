@@ -1,0 +1,37 @@
+<h2>Gestion du carousel</h2>
+<p>Liste des slides :</p>
+
+<h3>Ajouter une slide</h3>
+
+<form id="addSlideForm" enctype="multipart/form-data">
+  <input type="file" name="image" id="imageInput" accept="image/*" required />
+
+<!-- PREVIEW -->
+<img id="previewImage" style="display:none; max-width:200px; margin:10px 0; border-radius:8px;" />
+
+  <input type="text" name="title" placeholder="Titre" required />
+  <input type="text" name="description" placeholder="Description" required />
+  <input type="number" name="position" placeholder="Position" required />
+  <button type="submit">Ajouter</button>
+</form>
+
+<hr />
+
+
+<table class="carousel-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Position</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="carouselTable">
+    <tr>
+      <td colspan="6">Chargement...</td>
+    </tr>
+  </tbody>
+</table>

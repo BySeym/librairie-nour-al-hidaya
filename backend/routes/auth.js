@@ -1,7 +1,8 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { db } from "../db.js";
+import db from "../db.js";
+
 
 const router = express.Router();
 
@@ -26,7 +27,8 @@ router.post("/login", async (req, res) => {
 
   const token = jwt.sign(
     { id: admin.id },
-    "SECRET_TEMPORAIRE",
+   process.env.JWT_SECRET,
+
     { expiresIn: "2h" }
   );
 

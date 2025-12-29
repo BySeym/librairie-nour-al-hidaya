@@ -2,20 +2,35 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Admin</title>
+  <title>Admin Panel</title>
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-  <div class="center">
-    <div class="card">
-      <h2>Bienvenue 👋</h2>
-      <p>Panneau admin prêt.</p>
-      <button id="logout">Déconnexion</button>
-    </div>
-  </div>
+<div class="admin-layout">
 
-  <!-- UN SEUL SCRIPT -->
-  <script src="admin.js"></script>
+  <!-- MENU GAUCHE -->
+  <aside class="admin-menu">
+    <h2>Admin</h2>
+
+    <nav>
+      <button data-section="carousel">Carousel</button>
+      <button data-section="promo">Slide promo</button>
+      <button data-section="other">Autre</button>
+    </nav>
+
+    <button id="logout" class="logout">Déconnexion</button>
+  </aside>
+
+  <!-- CONTENU DROIT -->
+  <main class="admin-content" id="adminContent">
+    <h2>Bienvenue 👋</h2>
+    <p>Sélectionne une section dans le menu.</p>
+  </main>
+
+</div>
+
+<script src="admin.js"></script>
+
 </body>
 </html>
