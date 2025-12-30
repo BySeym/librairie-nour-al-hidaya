@@ -220,3 +220,25 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+
+
+async function loadPromo() {
+  const res = await fetch("http://localhost:3000/api/promo");
+  const promo = await res.json();
+
+  document.querySelector(".promoBadge").textContent = promo.badge;
+  document.querySelector(".promo h3").textContent = promo.title;
+  document.querySelector(".promo p").textContent = promo.description;
+
+  const promoVisual = document.querySelector(".promoVisual");
+
+  // ✅ ON PASSE PAR LA VARIABLE CSS
+  promoVisual.style.setProperty(
+    "--promo-image",
+    `url("http://localhost:3000/uploads/${promo.image}")`
+  );
+}
+
+loadPromo();
+
