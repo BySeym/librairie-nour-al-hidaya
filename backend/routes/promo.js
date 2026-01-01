@@ -1,3 +1,5 @@
+
+
 import express from "express";
 import db from "../db.js";
 import multer from "multer";
@@ -5,46 +7,42 @@ import authMiddleware from "../middleware/authMiddleware.js";
 import path from "path";
 import fs from "fs";
 
-
 const router = express.Router();
 
-// upload image
+// ✅ Configuration multer avec noms uniques
 const storage = multer.diskStorage({
   destination: "uploads/",
   filename: (req, file, cb) => {
     const ext = file.originalname.split(".").pop();
-    cb(null, "promo." + ext);
+    // Génère un nom unique avec timestamp
+    const uniqueName = `promo-${Date.now()}.${ext}`;
+    cb(null, uniqueName);
   }
 });
+
 const upload = multer({ storage });
 
 /* =====================
    GET promo (public)
 ===================== */
 router.get("/", async (req, res) => {
-  const [rows] = await db.query("SELECT * FROM promo LIMIT 1");
-  res.json(rows[0]);
+  try {
+    const [rows] = await db.query("SELECT * FROM promo LIMIT 1");
+    
+    if (!rows || rows.length === 0) {
+      return res.status(404).json({ message: "Aucune promo trouvée" });
+    }
+    
+    res.json(rows[0]);
+  } catch (err) {
+    console.error("❌ Erreur GET promo:", err);
+    res.status(500).json({ message: "Erreur serveur" });
+  }
 });
 
 /* =====================
    UPDATE promo (admin)
 ===================== */
-// router.put("/", authMiddleware, upload.single("image"), async (req, res) => {
-//   const { badge, title, description } = req.body;
-
-//   let query = "UPDATE promo SET badge=?, title=?, description=?";
-//   let params = [badge, title, description];
-
-//   if (req.file) {
-//     query += ", image=?";
-//     params.push(req.file.filename);
-//   }
-
-//   await db.query(query, params);
-
-//   res.json({ message: "Promo mise à jour" });
-// });
-
 router.put(
   "/",
   authMiddleware,
@@ -53,25 +51,36 @@ router.put(
     try {
       const { badge, title, description } = req.body;
 
-      // 1️⃣ récupérer l’ancienne image
+      console.log("📝 Mise à jour promo:", { badge, title, description });
+      console.log("📸 Fichier uploadé:", req.file?.filename);
+
+      // 1️⃣ Récupérer l'ancienne image
       const [rows] = await db.query(
         "SELECT image FROM promo WHERE id = 1"
       );
 
       const oldImage = rows[0]?.image;
 
-      // 2️⃣ nouvelle image si envoyée
+      // 2️⃣ Déterminer la nouvelle image
       const newImage = req.file ? req.file.filename : oldImage;
 
-      // 3️⃣ supprimer l’ancienne image si nouvelle fournie
-      if (req.file && oldImage) {
+      // 3️⃣ Supprimer l'ancienne image si une nouvelle est fournie
+      if (req.file && oldImage && oldImage !== newImage) {
         const oldPath = path.join(process.cwd(), "uploads", oldImage);
+        
         if (fs.existsSync(oldPath)) {
-          fs.unlinkSync(oldPath);
+          try {
+            fs.unlinkSync(oldPath);
+            console.log("🗑️ Ancienne image supprimée:", oldImage);
+          } catch (deleteErr) {
+            console.error("⚠️ Impossible de supprimer l'ancienne image:", deleteErr);
+          }
+        } else {
+          console.log("⚠️ Ancienne image introuvable:", oldPath);
         }
       }
 
-      // 4️⃣ mise à jour DB
+      // 4️⃣ Mise à jour de la base de données
       await db.query(
         `UPDATE promo
          SET badge = ?, title = ?, description = ?, image = ?
@@ -79,14 +88,20 @@ router.put(
         [badge, title, description, newImage]
       );
 
-      res.json({ message: "Promo mise à jour" });
+      console.log("✅ Promo mise à jour avec succès");
+      console.log("🖼️ Nouvelle image:", newImage);
+
+      res.json({ 
+        message: "Promo mise à jour",
+        image: newImage,
+        timestamp: Date.now() // Pour le cache busting côté client
+      });
 
     } catch (err) {
-      console.error(err);
+      console.error("❌ Erreur UPDATE promo:", err);
       res.status(500).json({ message: "Erreur serveur" });
     }
   }
 );
-
 
 export default router;

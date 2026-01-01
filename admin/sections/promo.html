@@ -1,11 +1,74 @@
-<h1>Section promo</h1>
+<h1>Section Promo</h1>
 
 <form id="promoForm" enctype="multipart/form-data">
-  <input type="text" name="badge" placeholder="Badge">
-  <input type="text" name="title" placeholder="Titre">
-  <textarea name="description" placeholder="Description"></textarea>
+  <label>Badge</label>
+  <input type="text" name="badge" placeholder="Badge" required>
+  
+  <label>Titre</label>
+  <input type="text" name="title" placeholder="Titre" required>
+  
+  <label>Description</label>
+  <textarea name="description" placeholder="Description" required></textarea>
 
-  <input type="file" name="image">
-  <button>Enregistrer</button>
+  <label>Image actuelle</label>
+  <!-- ✅ Aperçu de l'image actuelle -->
+  <div id="imagePreviewContainer" style="margin: 10px 0;">
+    <img id="currentImage" 
+         src="" 
+         alt="Aperçu promo" 
+         style="max-width: 300px; display: none; border: 2px solid #ddd; border-radius: 8px;">
+  </div>
+
+  <label>Nouvelle image (optionnel)</label>
+  <input type="file" name="image" accept="image/*">
+  
+  <button type="submit">💾 Enregistrer</button>
 </form>
 
+<style>
+  #promoForm {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  #promoForm label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  #promoForm input,
+  #promoForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  #promoForm textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  #promoForm button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  #promoForm button:hover {
+    background: #0056b3;
+  }
+</style>

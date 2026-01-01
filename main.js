@@ -1,54 +1,51 @@
+// Année auto
+document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Année auto
-  document.getElementById("year").textContent = new Date().getFullYear();
+// Menu mobile
+(function(){
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  if(!burger || !drawer) return;
+  burger.addEventListener('click', () => drawer.classList.toggle('open'));
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+})();
 
-  // Menu mobile
-  (function(){
-    const burger = document.getElementById('burger');
-    const drawer = document.getElementById('drawer');
-    if(!burger || !drawer) return;
-    burger.addEventListener('click', () => drawer.classList.toggle('open'));
-    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
-  })();
+// Lightbox (Produits + Univers)
+(function(){
+  const box = document.getElementById('lightbox');
+  const img = document.getElementById('lbImg');
+  const closeBtn = document.getElementById('lbClose');
+  const cards = document.querySelectorAll('.zoomable[data-img]');
 
-  // Lightbox (Produits + Univers)
-  (function(){
-    const box = document.getElementById('lightbox');
-    const img = document.getElementById('lbImg');
-    const closeBtn = document.getElementById('lbClose');
-    const cards = document.querySelectorAll('.zoomable[data-img]');
+  function open(src){
+    img.src = src;
+    box.classList.add('active');
+    box.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    box.classList.remove('active');
+    box.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    img.src = '';
+  }
 
-    function open(src){
-      img.src = src;
-      box.classList.add('active');
-      box.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function close(){
-      box.classList.remove('active');
-      box.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      img.src = '';
-    }
-
-    cards.forEach(card => {
-      card.addEventListener('click', () => open(card.getAttribute('data-img')));
-      card.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          open(card.getAttribute('data-img'));
-        }
-      });
+  cards.forEach(card => {
+    card.addEventListener('click', () => open(card.getAttribute('data-img')));
+    card.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open(card.getAttribute('data-img'));
+      }
     });
+  });
 
-    closeBtn.addEventListener('click', close);
-    box.addEventListener('click', (e) => { if(e.target === box) close(); });
-    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
-  })();
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', (e) => { if(e.target === box) close(); });
+  window.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+})();
 
-
-
-  // Carousel
+// Carousel
 function initCarousel(){
   const track = document.getElementById('track');
   const prev = document.getElementById('prev');
@@ -58,6 +55,11 @@ function initCarousel(){
   if(!track) return;
   const slides = Array.from(track.children);
   const total = slides.length;
+
+  if(total === 0) {
+    console.warn("⚠️ Aucune slide dans le carousel");
+    return;
+  }
 
   let i = 0;
   let timer = null;
@@ -71,7 +73,7 @@ function initCarousel(){
       const d = document.createElement('button');
       d.className = 'dot' + (idx === i ? ' active' : '');
       d.type = 'button';
-      d.setAttribute('aria-label', 'Aller à l’image ' + (idx+1));
+   d.setAttribute('aria-label', 'Aller à l\'image ' + (idx+1));
       d.addEventListener('click', () => go(idx));
       dotsWrap.appendChild(d);
     });
@@ -123,39 +125,59 @@ function initCarousel(){
 
   go(0);
   start();
-};
+}
 
-
-const track = document.getElementById("track");
-
+// Chargement du carousel depuis l'API
 async function loadCarousel() {
+  const track = document.getElementById("track");
+  
+  if (!track) {
+    console.warn("⚠️ Element #track non trouvé");
+    return;
+  }
+
   try {
     const res = await fetch("http://localhost:3000/api/carousel");
+    
+    if (!res.ok) {
+      console.error("❌ Erreur API carousel:", res.status);
+      return;
+    }
+    
     const slides = await res.json();
+    
+    // ✅ Vérifier que c'est un tableau
+    if (!Array.isArray(slides)) {
+      console.error("❌ Les données ne sont pas un tableau:", slides);
+      return;
+    }
+    
+    // ✅ Vérifier qu'il y a des slides
+    if (slides.length === 0) {
+      console.warn("⚠️ Aucune slide dans la base de données");
+      return;
+    }
+
+    console.log(`✅ ${slides.length} slide(s) chargée(s)`);
 
     track.innerHTML = "";
 
     slides.forEach(slide => {
       const div = document.createElement("div");
       div.className = "slide";
-    div.style.backgroundImage = `url('http://localhost:3000/uploads/${slide.image}')`;
-
+      div.style.backgroundImage = `url('http://localhost:3000/uploads/${slide.image}')`;
       track.appendChild(div);
     });
 
-     initCarousel();
-    // ⚠️ IMPORTANT :
-    // ici tu peux appeler ta fonction existante
-    // initCarousel(); (si elle existe)
+    initCarousel();
+    
   } catch (err) {
-    console.error("Erreur chargement carousel", err);
+    console.error("❌ Erreur chargement carousel:", err);
   }
 }
 
+// Lancer le chargement du carousel
 loadCarousel();
-
-
-
 
 // Animation promo au scroll — rejouable
 (function(){
@@ -175,7 +197,6 @@ loadCarousel();
 
   observer.observe(promo);
 })();
-
 
 // Animation Univers – cartes en cascade
 (function(){
@@ -203,7 +224,6 @@ loadCarousel();
   cards.forEach(card => observer.observe(card));
 })();
 
-
 // Toast réseaux sociaux
 document.addEventListener('DOMContentLoaded', function () {
   const toast = document.getElementById('socialToast');
@@ -220,25 +240,79 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
-
-
+// ===========================
+// ✅ CHARGEMENT DE LA PROMO
+// ===========================
 async function loadPromo() {
-  const res = await fetch("http://localhost:3000/api/promo");
-  const promo = await res.json();
+  console.log("🔄 Chargement de la promo...");
+  
+  try {
+    const res = await fetch("http://localhost:3000/api/promo");
+    
+    if (!res.ok) {
+      console.error("❌ Erreur HTTP promo:", res.status);
+      return;
+    }
+    
+    const promo = await res.json();
+    console.log("📊 Promo chargée:", promo);
 
-  document.querySelector(".promoBadge").textContent = promo.badge;
-  document.querySelector(".promo h3").textContent = promo.title;
-  document.querySelector(".promo p").textContent = promo.description;
+    // Mise à jour des textes
+    const badge = document.querySelector(".promoBadge");
+    const title = document.querySelector(".promo h3");
+    const desc = document.querySelector(".promo p");
+    
+    if (badge) badge.textContent = promo.badge || "";
+    if (title) title.textContent = promo.title || "";
+    if (desc) desc.textContent = promo.description || "";
 
-  const promoVisual = document.querySelector(".promoVisual");
+    // Mise à jour de l'image
+    const promoVisual = document.querySelector(".promoVisual");
+    
+    if (!promoVisual) {
+      console.error("❌ Element .promoVisual introuvable dans le DOM");
+      return;
+    }
+    
+    if (!promo.image) {
+      console.warn("⚠️ Aucune image définie dans la promo");
+      return;
+    }
 
-  // ✅ ON PASSE PAR LA VARIABLE CSS
-  promoVisual.style.setProperty(
-    "--promo-image",
-    `url("http://localhost:3000/uploads/${promo.image}")`
-  );
+    // ✅ URL avec timestamp pour éviter le cache
+    const timestamp = Date.now();
+    const imageUrl = `http://localhost:3000/uploads/${promo.image}?t=${timestamp}`;
+    console.log("🖼️ URL image finale:", imageUrl);
+
+    // Appliquer via variable CSS
+    promoVisual.style.setProperty("--promo-image", `url("${imageUrl}")`);
+    
+    // ✅ Forcer aussi en style direct pour contourner le cache
+    promoVisual.style.backgroundImage = `url("${imageUrl}")`;
+    promoVisual.style.backgroundSize = "cover";
+    promoVisual.style.backgroundPosition = "center";
+
+    // Test de chargement de l'image
+    const testImg = new Image();
+    testImg.onload = () => {
+      console.log("✅ Image promo chargée avec succès");
+      console.log("   Dimensions:", testImg.width, "x", testImg.height);
+      console.log("   URL:", imageUrl);
+    };
+    testImg.onerror = () => {
+      console.error("❌ Impossible de charger l'image promo");
+      console.error("   URL testée:", imageUrl);
+      console.error("   Vérifiez:");
+      console.error("   1. Le fichier existe dans backend/uploads/");
+      console.error("   2. Le serveur Node.js est lancé");
+      console.error("   3. Pas d'erreur 404 dans l'onglet Network (F12)");
+    };
+    testImg.src = imageUrl;
+
+  } catch (err) {
+    console.error("❌ Erreur loadPromo:", err);
+  }
 }
 
+// ✅ LANCER LE CHARGEMENT DE LA PROMO
 loadPromo();
-
