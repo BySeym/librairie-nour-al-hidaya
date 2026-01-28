@@ -146,19 +146,17 @@ button {
 .logoWrap {
   width: 100px;
   height: 100px;
-  border-radius: 18px;
+ 
   overflow: hidden;
   background: linear-gradient(135deg, 
-    rgba(183, 247, 209, 0.15), 
-    rgba(255, 233, 166, 0.15)
+    rgba(183, 247, 209, 0), 
+    rgba(255, 233, 166, 0)
   );
   display: grid;
   place-items: center;
   padding: 8px;
   flex: 0 0 auto;
   position: relative;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.4s var(--ease-smooth);
 }
 
 .logoWrap::before {
@@ -178,14 +176,14 @@ button {
   transition: transform 0.6s var(--ease-smooth);
 }
 
-.brand:hover .logoWrap::before {
+/* .brand:hover .logoWrap::before {
   transform: translateX(100%) rotate(45deg);
 }
 
 .brand:hover .logoWrap {
   transform: scale(1.05);
   box-shadow: var(--shadow-md);
-}
+} */
 
 .brand h1 {
   font-size: 1.1rem;
@@ -1184,7 +1182,7 @@ section {
 }
 
 .reviewCard::before {
-  content: """;
+  content: "";
   position: absolute;
   top: -20px;
   left: 20px;
