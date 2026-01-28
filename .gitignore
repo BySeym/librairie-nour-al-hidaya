@@ -1,3 +1,38 @@
+# Dépendances
 node_modules/
+package-lock.json
+
+# Environnement
 .env
+.env.local
+.env.production
+
+# Uploads
 backend/uploads/
+uploads/
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Cache
+.cache/
+dist/
+build/
+
+# Temporaires
+*.tmp
+*.temp
