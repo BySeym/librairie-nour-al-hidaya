@@ -18,6 +18,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// 🌍 SERVIR LE SITE (frontend)
+app.use(express.static(path.join(__dirname, "..")));
+
+
 // ✅ Vérification du dossier uploads au démarrage
 const uploadsDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadsDir)) {
@@ -52,6 +56,11 @@ app.use("/api/promo", promoRoutes);
 
 // 🚀 SERVER
 const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
 
 app.listen(PORT, () => {
   console.log(`Backend lancé sur http://localhost:${PORT}`);
