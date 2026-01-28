@@ -19,7 +19,8 @@ app.use(cors());
 app.use(express.json());
 
 // 🌍 SERVIR LE SITE (frontend)
-app.use(express.static(path.join(__dirname, "..")));
+app.use(express.static(path.resolve(__dirname, "..")));
+
 
 
 // ✅ Vérification du dossier uploads au démarrage
@@ -58,7 +59,7 @@ app.use("/api/promo", promoRoutes);
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
+  res.sendFile(path.resolve(__dirname, "..", "index.html"));
 });
 
 
