@@ -18,8 +18,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🌍 SERVIR LE SITE (frontend)
-app.use(express.static(path.resolve(__dirname, "..")));
+
 
 
 
