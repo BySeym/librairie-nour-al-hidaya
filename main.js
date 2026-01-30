@@ -316,3 +316,62 @@ async function loadPromo() {
 
 // ✅ LANCER LE CHARGEMENT DE LA PROMO
 loadPromo();
+
+// SECTION "UN LARGE CHOIX D’ARTICLES"
+(async function loadProductsSection() {
+  const container = document.getElementById("productsSection");
+  if (!container) return;
+
+  const res = await fetch("http://localhost:3000/api/products-section");
+  const items = await res.json();
+
+  container.innerHTML = "";
+
+ items.slice(0, 15).forEach((item) => {
+    const article = document.createElement("article");
+    article.className = "product zoomable";
+    article.dataset.img = `http://localhost:3000/uploads/${item.image}`;
+    article.setAttribute("role", "button");
+    article.setAttribute("tabindex", "0");
+
+   article.innerHTML =  `
+  <div class="productVisual"
+       style="--product-image: url('http://localhost:3000/uploads/${item.image}')">
+  </div>
+      <div class="cardPad">
+        <h4>${item.title}</h4>
+        <p>${item.description}</p>
+        <div class="pill">Voir en grand</div>
+      </div>
+    `;
+
+    container.appendChild(article);
+  });
+
+  if (window.initZoomables) window.initZoomables();
+})();
+
+// ===========================
+// ZOOM IMAGE (PUBLIC)
+// ===========================
+document.addEventListener("click", (e) => {
+  const card = e.target.closest(".zoomable");
+  if (!card) return;
+
+  const img = card.dataset.img;
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+
+  modalImg.src = img;
+  modal.style.display = "flex";
+});
+
+// fermer le zoom au clic
+document.getElementById("imageModal")?.addEventListener("click", () => {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+
+  modal.style.display = "none";
+  modalImg.src = "";
+});
+

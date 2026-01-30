@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import carouselRoutes from "./routes/carousel.js";
 import promoRoutes from "./routes/promo.js";
+import productsSectionRoutes from "./routes/productsSection.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -51,6 +52,9 @@ app.use("/api/promo", promoRoutes);
 
 // 🚀 SERVER
 const PORT = process.env.PORT || 3000;
+
+// 🧥 Product
+app.use("/api/products-section", productsSectionRoutes);
 
 app.listen(PORT, () => {
   console.log(`Backend lancé sur http://localhost:${PORT}`);

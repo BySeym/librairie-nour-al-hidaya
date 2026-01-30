@@ -816,13 +816,13 @@ section {
    PRODUCTS GRID - Premium cards
    ==================================== */
 
-.products {
+/* .products {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 20px;
-}
+} */
 
-.product {
+/* .product {
   grid-column: span 4;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.6);
@@ -831,9 +831,9 @@ section {
   box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: all 0.4s var(--ease-smooth);
-}
+} */
 
-.product:hover {
+/* .product:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: var(--shadow-xl);
   border-color: rgba(183, 247, 209, 0.4);
@@ -858,9 +858,9 @@ section {
     transparent 0%, 
     rgba(0, 0, 0, 0.05) 100%
   );
-}
+} */
 
-.product .img img {
+/* .product .img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -869,13 +869,24 @@ section {
 
 .product:hover .img img {
   transform: scale(1.15);
-}
+} */
 
-.cardPad {
-  padding: 24px;
-}
+/* .cardPad p {
+  line-height: 1.6;
 
-.product h4 {
+  
+  word-break: break-word;
+  overflow-wrap: anywhere;
+
+  
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+} */
+
+
+/* .product h4 {
   font-size: 1.15rem;
   letter-spacing: -0.01em;
   margin-bottom: 10px;
@@ -885,9 +896,9 @@ section {
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.6;
-}
+} */
 
-.pill {
+/* .pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -904,19 +915,183 @@ section {
   width: fit-content;
   font-weight: 500;
   transition: all 0.3s var(--ease-smooth);
-}
+} */
 
-.product:hover .pill {
+/* .product:hover .pill {
   background: linear-gradient(135deg, 
     rgba(183, 247, 209, 0.35), 
     rgba(255, 233, 166, 0.25)
   );
   transform: translateX(4px);
+} */
+
+
+
+/* ====================================
+   PRODUCTS GRID - Premium cards (CLEAN)
+   ==================================== */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
 }
+
+/* ----- CARD ----- */
+.product {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.product:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(183, 247, 209, 0.4);
+}
+
+/* ----- IMAGE ----- */
+.product .img {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.product .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-smooth);
+}
+
+.product:hover .img img {
+  transform: scale(1.15);
+}
+
+/* ----- CONTENT ----- */
+.cardPad {
+  padding: 20px;
+}
+
+/* ----- TITLE (2 lines max) ----- */
+.product h4 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  line-height: 1.3;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* ----- DESCRIPTION (🔥 3 lines max – FIXED) ----- */
+.product .cardPad p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* ----- BUTTON ----- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 14px;
+  padding: 8px 14px;
+
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    135deg,
+    rgba(183, 247, 209, 0.2),
+    rgba(255, 233, 166, 0.15)
+  );
+
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--muted);
+  width: fit-content;
+
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.product:hover .pill {
+  background: linear-gradient(
+    135deg,
+    rgba(183, 247, 209, 0.35),
+    rgba(255, 233, 166, 0.25)
+  );
+  transform: translateX(4px);
+}
+/* 
+.product .cardPad p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+
+  white-space: normal;   
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+} */
+
+.product .cardPad p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted);
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+
+
+
 
 /* ====================================
    UNIVERS GRID - Immersive cards
    ==================================== */
+
+
+
 
 .universGrid {
   display: grid;
@@ -1152,6 +1327,78 @@ section {
 .promoBox:hover .promoVisual::after {
   transform: scale(1.05);
 }
+
+
+
+
+/* CONTENEUR IMAGE PRODUIT */
+.productVisual {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 220px;
+  border-radius: 16px;
+  background-image: var(--product-image);
+  background-size: cover;      /* 🔥 REMPLIT TOUT */
+  background-position: center; /* 🔥 CENTRÉ PROPRE */
+  background-repeat: no-repeat;
+}
+
+.product h4 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  line-height: 1.3;
+
+  /* Clamp multi-lignes */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* sécurité */
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.productVisual {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+}
+
+.cardPad {
+  padding: 20px;
+  overflow: visible;
+}
+
+.product .cardPad p {
+  line-height: 1.6;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+
+  overflow: hidden;
+
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+
+
+
+
 
 /* ====================================
    AVIS CLIENTS - Premium reviews
@@ -1786,4 +2033,28 @@ section {
     color: black !important;
     box-shadow: none !important;
   }
+}
+
+
+
+
+
+/* FORCE clamp products (override) */
+.products .product .cardPad p {
+  margin: 0 !important;
+  color: var(--muted) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+
+  white-space: normal !important;
+
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 6 !important;
+  line-clamp: 6 !important;
+
+  overflow: hidden !important;
+
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
 }

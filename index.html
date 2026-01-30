@@ -182,80 +182,23 @@
                 découvrir tout le reste en boutique.
               </p>
             </div>
-            <a class="btn" href="#venir">Adresse & horaires</a>
-          </div>
+          
+</div>
 
-          <div class="products">
-            <article
-              class="product zoomable"
-              data-img="assets/p1.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir l'image Corans et livres en grand"
-            >
-              <div class="img">
-                <img src="assets/p1.jpg" alt="Corans et livres" />
-              </div>
-              <div class="cardPad">
-                <h4>Corans & livres</h4>
-                <p>
-                  Corans, livres de sciences religieuses, ouvrages d’histoire,
-                  romans et lectures pour tous les niveaux sont disponibles
-                  directement en magasin.
-                </p>
-                <div class="pill">Voir en grand</div>
-              </div>
-            </article>
+<div class="products" id="productsSection">
 
-            <article
-              class="product zoomable"
-              data-img="assets/p2.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir l'image Parfums et bien-être en grand"
-            >
-              <div class="img">
-                <img src="assets/p2.jpg" alt="Parfums et bien-être" />
-              </div>
-              <div class="cardPad">
-                <h4>Parfums & bien-être</h4>
-                <p>
-                  Parfums, musk, huiles parfumées et miel, à découvrir et tester
-                  directement en boutique.
-                </p>
-                <div class="pill">Voir en grand</div>
-              </div>
-            </article>
+</div>
 
-            <article
-              class="product zoomable"
-              data-img="assets/p3.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir l'image Articles et vêtements en grand"
-            >
-              <div class="img">
-                <img src="assets/p3.jpg" alt="Articles et vêtements" />
-              </div>
-              <div class="cardPad">
-                <h4>Articles & vêtements</h4>
-                <p>
-                  Tapis de prière, tasbih, encens et vêtements pour femmes,
-                  hommes et enfants, à découvrir directement en boutique.
-                </p>
-                <div class="pill">Voir en grand</div>
-              </div>
-            </article>
-          </div>
-        </section>
+</section>
+
+          
 
         <section id="univers">
           <div class="sectionHead">
             <div>
               <h3>Univers de la librairie</h3>
               <p>
-                Un aperçu visuel de ce que vous trouverez sur place — cliquez
-                pour voir les photos en grand.
+                Un aperçu visuel de ce que vous trouverez sur place 
               </p>
             </div>
           </div>
@@ -330,7 +273,7 @@
             >
               <div
                 class="uImg"
-                style="background-image: url(&quot;assets/slide5.jpg&quot;)"
+                style="background-image: url(&quot;assets/encens.png&quot;)"
               ></div>
               <div class="uShade"></div>
               <div class="uLabel"><b>Encens</b><span>Accessoires</span></div>
@@ -587,6 +530,30 @@
         </div>
       </div>
     </div>
+<!-- MODAL IMAGE -->
+<div
+  id="imageModal"
+  style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+  "
+>
+  <img
+    id="modalImg"
+    style="
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    "
+  />
+</div>
 
     <script src="main.js" defer></script>
   </body>
