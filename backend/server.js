@@ -19,10 +19,6 @@ app.use(cors());
 app.use(express.json());
 
 
-
-
-
-// ✅ Vérification du dossier uploads au démarrage
 const uploadsDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
@@ -31,9 +27,8 @@ if (!fs.existsSync(uploadsDir)) {
   console.log("✅ Dossier uploads existant");
 }
 
-// 🖼️ SERVIR LES IMAGES AVEC HEADERS NO-CACHE
 app.use("/uploads", (req, res, next) => {
-  // Désactiver le cache pour les images
+
   res.set({
     'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
     'Pragma': 'no-cache',
@@ -56,11 +51,6 @@ app.use("/api/promo", promoRoutes);
 
 // 🚀 SERVER
 const PORT = process.env.PORT || 3000;
-
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", "index.html"));
-});
-
 
 app.listen(PORT, () => {
   console.log(`Backend lancé sur http://localhost:${PORT}`);

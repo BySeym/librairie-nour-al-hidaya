@@ -1,478 +1,593 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Nour Al Hidaya — Librairie à Trappes</title>
-  <meta name="description" content="Nour Al Hidaya à Trappes : ouvrages, parfums, articles, vêtements. Découvrez une sélection et venez voir tout le reste en boutique." />
-  <link rel="icon" href="assets/logo.png" type="image/png" />
+    <title>Nour Al Hidaya — Librairie à Trappes</title>
+    <meta
+      name="description"
+      content="Nour Al Hidaya à Trappes : ouvrages, parfums, articles, vêtements. Découvrez une sélection et venez voir tout le reste en boutique."
+    />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <div class="nav">
+          <a class="brand" href="#top" aria-label="Accueil Nour Al Hidaya">
+            <div class="logoWrap" aria-hidden="true">
+              <img
+                src="assets/logo.png"
+                alt="Logo Nour Al Hidaya"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div>
+              <h1>Nour Al Hidaya</h1>
+              <span>Librairie à Trappes</span>
+            </div>
+          </a>
 
- 
-</head>
+          <nav class="links" aria-label="Navigation">
+            <a href="#phares">Produits</a>
+            <a href="#univers">Univers</a>
+            <a href="#venir">Accès</a>
+          </nav>
 
-<body>
-<header class="topbar">
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="#top" aria-label="Accueil Nour Al Hidaya">
-        <div class="logoWrap" aria-hidden="true">
-          <img src="assets/logo.png" alt="Logo Nour Al Hidaya" style="width:100%;height:100%;object-fit:contain">
-        </div>
-        <div>
-          <h1>Nour Al Hidaya</h1>
-          <span>Librairie à Trappes</span>
-        </div>
-      </a>
-
-      <nav class="links" aria-label="Navigation">
-        <a href="#phares">Produits</a>
-        <a href="#univers">Univers</a>
-        <a href="#venir">Accès</a>
-      </nav>
-
-      <div class="ctaRow">
-        <a class="btn" href="#venir">Venir en boutique</a>
-        <a class="btn primary" href="#phares">Découvrir</a>
-        <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu">☰</button>
-      </div>
-    </div>
-
-    <div class="drawer" id="drawer" aria-label="Menu mobile">
-      <a href="#phares">Produits</a>
-      <a href="#univers">Univers</a>
-      <a href="#venir">Accès</a>
-      <a href="mentions-legales.html">Mentions légales</a>
-    </div>
-  </div>
-</header>
-
-<section class="carousel" aria-label="Galerie de la librairie">
- <div class="carousel-track" id="track">
-  <!-- Slides chargées dynamiquement -->
-</div>
-
-  <button class="car-btn prev" id="prev" aria-label="Image précédente">‹</button>
-  <button class="car-btn next" id="next" aria-label="Image suivante">›</button>
-
-  <div class="car-dots" id="dots" aria-label="Navigation du carousel"></div>
-
-  <div class="car-overlay">
-    <div class="container">
-      <div class="car-text">
-        <span class="car-pill">Nour Al Hidaya • Trappes</span>
-        <h2>Une librairie aux mille trésors</h2>
-        
-        
-      </div>
-    </div>
-  </div>
-</section> 
-
-
-
-
-<main id="top">
-  <div class="container">
-
-    <section class="hero">
-      <div class="heroGrid">
-        <div class="heroLeft">
-          <div class="badge">Sélection soignée • Conseils en boutique</div>
-          <h2>Une librairie aux mille trésors, à explorer sur place.</h2>
-          <p>
-            Ici, vous avez un aperçu. En boutique, c’est une vraie caverne de découvertes :
-            ouvrages, senteurs, cadeaux et trouvailles choisies avec soin.
-            Venez flâner et trouver ce qui vous correspond.
-          </p>
-
-          <div class="heroActions">
-            <a class="btn primary" href="#venir">Voir l’itinéraire</a>
-            <a class="btn" href="#phares">Voir les produits phares</a>
-          </div>
-
-          <div class="chips" aria-label="Points forts">
-            <div class="chip">Accueil & conseils</div>
-            <div class="chip">Idées cadeaux</div>
-            <div class="chip">Large choix en magasin</div>
-            <div class="chip">Découvertes</div>
+          <div class="ctaRow">
+            <a class="btn" href="#venir">Venir en boutique</a>
+            <a class="btn primary" href="#phares">Découvrir</a>
+            <button
+              class="burger"
+              id="burger"
+              type="button"
+              aria-label="Ouvrir le menu"
+            >
+              ☰
+            </button>
           </div>
         </div>
 
-        <div class="heroRight">
-          <div class="photoCard">
-            <div class="heroCardBg" aria-hidden="true"></div>
-            <div class="heroCardContent">
-              <div class="loc">📍 Trappes</div>
-              <h3>Une librairie aux mille trésors</h3>
+        <div class="drawer" id="drawer" aria-label="Menu mobile">
+          <a href="#phares">Produits</a>
+          <a href="#univers">Univers</a>
+          <a href="#venir">Accès</a>
+          <a href="mentions-legales.html">Mentions légales</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="carousel" aria-label="Galerie de la librairie">
+      <div class="carousel-track" id="track">
+      </div>
+
+      <button class="car-btn prev" id="prev" aria-label="Image précédente">
+        ‹
+      </button>
+      <button class="car-btn next" id="next" aria-label="Image suivante">
+        ›
+      </button>
+
+      <div class="car-dots" id="dots" aria-label="Navigation du carousel"></div>
+
+      <div class="car-overlay">
+        <div class="container">
+          <div class="car-text">
+            <span class="car-pill">Nour Al Hidaya • Trappes</span>
+            <h2>Une librairie aux mille trésors</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main id="top">
+      <div class="container">
+        <section class="hero">
+          <div class="heroGrid">
+            <div class="heroLeft">
+              <div class="badge">Sélection soignée • Conseils en boutique</div>
+              <h2>Une librairie aux mille trésors, à explorer sur place.</h2>
               <p>
-                Poussez la porte et laissez-vous surprendre.
-                Entre ouvrages précieux, senteurs raffinées et objets choisis avec soin,
-                chaque recoin révèle une nouvelle découverte.
+                Ici, vous avez un aperçu. En boutique, c’est une vraie caverne
+                de découvertes : ouvrages, senteurs, cadeaux et trouvailles
+                choisies avec soin. Venez flâner et trouver ce qui vous
+                correspond.
               </p>
-              <div class="heroCardBtns">
-                <a class="btn glass" target="_blank"
-                   href="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes">
-                  Voir l’itinéraire
-                </a>
-                <a class="btn glass" href="#phares">Voir la sélection</a>
+
+              <div class="heroActions">
+                <a class="btn primary" href="#venir">Voir l’itinéraire</a>
+                <a class="btn" href="#phares">Voir les produits phares</a>
+              </div>
+
+              <div class="chips" aria-label="Points forts">
+                <div class="chip">Accueil & conseils</div>
+                <div class="chip">Idées cadeaux</div>
+                <div class="chip">Large choix en magasin</div>
+                <div class="chip">Découvertes</div>
+              </div>
+            </div>
+
+            <div class="heroRight">
+              <div class="photoCard">
+                <div class="heroCardBg" aria-hidden="true"></div>
+                <div class="heroCardContent">
+                  <div class="loc">📍 Trappes</div>
+                  <h3>Une librairie aux mille trésors</h3>
+                  <p>
+                    Poussez la porte et laissez-vous surprendre. Entre ouvrages
+                    précieux, senteurs raffinées et objets choisis avec soin,
+                    chaque recoin révèle une nouvelle découverte.
+                  </p>
+                  <div class="heroCardBtns">
+                    <a
+                      class="btn glass"
+                      target="_blank"
+                      href="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes"
+                    >
+                      Voir l’itinéraire
+                    </a>
+                    <a class="btn glass" href="#phares">Voir la sélection</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="miniStats">
+                <div class="stat">
+                  <b>Photos cliquables</b>
+                  <span>Ouvrez les images en grand</span>
+                </div>
+                <div class="stat">
+                  <b>Encore plus en boutique</b>
+                  <span>Le vrai choix est sur place</span>
+                </div>
               </div>
             </div>
           </div>
+        </section>
 
-          <div class="miniStats">
-            <div class="stat">
-              <b>Photos cliquables</b>
-              <span>Ouvrez les images en grand</span>
-            </div>
-            <div class="stat">
-              <b>Encore plus en boutique</b>
-              <span>Le vrai choix est sur place</span>
+        <section class="promo">
+          <div class="container">
+            <div class="promoBox">
+              <div class="promoText">
+                <span class="promoBadge">À découvrir en boutique</span>
+                <h3>Nouveautés & idées cadeaux</h3>
+                <p>
+                  Chaque semaine, de nouvelles références arrivent en rayon :
+                  ouvrages, senteurs, accessoires et idées cadeaux soigneusement
+                  sélectionnés.
+                </p>
+              </div>
+
+              <div class="promoVisual" aria-hidden="true"></div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section class="promo">
-  <div class="container">
-    <div class="promoBox">
-      <div class="promoText">
-        <span class="promoBadge">À découvrir en boutique</span>
-        <h3>Nouveautés & idées cadeaux</h3>
+        <section id="phares">
+          <div class="sectionHead">
+            <div>
+              <h3>Un large choix d'articles</h3>
+              <p>
+                Cliquez sur une carte pour voir l’image en grand. Et venez
+                découvrir tout le reste en boutique.
+              </p>
+            </div>
+            <a class="btn" href="#venir">Adresse & horaires</a>
+          </div>
+
+          <div class="products">
+            <article
+              class="product zoomable"
+              data-img="assets/p1.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir l'image Corans et livres en grand"
+            >
+              <div class="img">
+                <img src="assets/p1.jpg" alt="Corans et livres" />
+              </div>
+              <div class="cardPad">
+                <h4>Corans & livres</h4>
+                <p>
+                  Corans, livres de sciences religieuses, ouvrages d’histoire,
+                  romans et lectures pour tous les niveaux sont disponibles
+                  directement en magasin.
+                </p>
+                <div class="pill">Voir en grand</div>
+              </div>
+            </article>
+
+            <article
+              class="product zoomable"
+              data-img="assets/p2.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir l'image Parfums et bien-être en grand"
+            >
+              <div class="img">
+                <img src="assets/p2.jpg" alt="Parfums et bien-être" />
+              </div>
+              <div class="cardPad">
+                <h4>Parfums & bien-être</h4>
+                <p>
+                  Parfums, musk, huiles parfumées et miel, à découvrir et tester
+                  directement en boutique.
+                </p>
+                <div class="pill">Voir en grand</div>
+              </div>
+            </article>
+
+            <article
+              class="product zoomable"
+              data-img="assets/p3.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir l'image Articles et vêtements en grand"
+            >
+              <div class="img">
+                <img src="assets/p3.jpg" alt="Articles et vêtements" />
+              </div>
+              <div class="cardPad">
+                <h4>Articles & vêtements</h4>
+                <p>
+                  Tapis de prière, tasbih, encens et vêtements pour femmes,
+                  hommes et enfants, à découvrir directement en boutique.
+                </p>
+                <div class="pill">Voir en grand</div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="univers">
+          <div class="sectionHead">
+            <div>
+              <h3>Univers de la librairie</h3>
+              <p>
+                Un aperçu visuel de ce que vous trouverez sur place — cliquez
+                pour voir les photos en grand.
+              </p>
+            </div>
+          </div>
+
+          <div class="universGrid">
+            <div
+              class="uCard zoomable"
+              data-img="assets/slide3.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir Vêtements femme en grand"
+            >
+              <div
+                class="uImg"
+                style="background-image: url(&quot;assets/slide3.jpg&quot;)"
+              ></div>
+              <div class="uShade"></div>
+              <div class="uLabel"><b>Femme</b><span>Vêtements</span></div>
+            </div>
+
+            <div
+              class="uCard zoomable"
+              data-img="assets/slide2.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir Vêtements homme en grand"
+            >
+              <div
+                class="uImg"
+                style="background-image: url(&quot;assets/slide2.jpg&quot;)"
+              ></div>
+              <div class="uShade"></div>
+              <div class="uLabel"><b>Homme</b><span>Vêtements</span></div>
+            </div>
+
+            <div
+              class="uCard zoomable"
+              data-img="assets/slide4.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir Enfant en grand"
+            >
+              <div
+                class="uImg"
+                style="background-image: url(&quot;assets/slide4.jpg&quot;)"
+              ></div>
+              <div class="uShade"></div>
+              <div class="uLabel"><b>Enfant</b><span>Vêtements</span></div>
+            </div>
+
+            <div
+              class="uCard zoomable"
+              data-img="assets/p2.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir Parfums et senteurs en grand"
+            >
+              <div
+                class="uImg"
+                style="background-image: url(&quot;assets/p2.jpg&quot;)"
+              ></div>
+              <div class="uShade"></div>
+              <div class="uLabel"><b>Parfums</b><span>Senteurs</span></div>
+            </div>
+
+            <div
+              class="uCard zoomable"
+              data-img="assets/slide5.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir Trésors et accessoires en grand"
+            >
+              <div
+                class="uImg"
+                style="background-image: url(&quot;assets/slide5.jpg&quot;)"
+              ></div>
+              <div class="uShade"></div>
+              <div class="uLabel"><b>Encens</b><span>Accessoires</span></div>
+            </div>
+
+            <div
+              class="uCard zoomable"
+              data-img="assets/slide1.jpg"
+              role="button"
+              tabindex="0"
+              aria-label="Voir Livres et rayons en grand"
+            >
+              <div
+                class="uImg"
+                style="background-image: url(&quot;assets/slide1.jpg&quot;)"
+              ></div>
+              <div class="uShade"></div>
+              <div class="uLabel"><b>Livres</b><span>Rayons</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="avis">
+          <div class="sectionHead">
+            <div>
+              <h3>Avis clients</h3>
+              <p>
+                ⭐ 4,7 / 5 — 218 avis Google. Ce que disent nos clients après
+                leur visite.
+              </p>
+            </div>
+            <a
+              class="btn"
+              target="_blank"
+              href="https://www.google.com/search?sca_esv=27bf74d1c97a8942&q=nour+al+hidaya+trapppes&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s04D3SwwF-_df957BkiVxDRNhP4MXL4t63Vjl8BnNRnc5iONvb600Y-GfhRhSZNVM2Yx41Y%3D&uds=AOm0WdEpNcp6pEjRdta6g1dVDwXuY1YdXYhHKndPkK7THIGApRjcewWmE3e1WuFW8oLmQ2KscKOVZFNGm0Gn-SRVFONppZEowiAMcuT6ycM0N5c9Mxxub_uWOj-rJb89QfUumhh37C3A&sa=X&ved=2ahUKEwiGvYXdzcSRAxV-KvsDHfjsMYUQ3PALegQIGRAE&biw=1536&bih=730&dpr=1.25"
+            >
+              Voir tous les avis
+            </a>
+          </div>
+
+          <div class="reviews">
+            <div class="reviewCard">
+              <div class="reviewHead">
+                <div>
+                  <div class="reviewName">Client Google</div>
+                  <div class="reviewSource">Avis Google</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="reviewText">
+                « Excellente librairie, on s’y sent apaisé et le gérant est
+                toujours avec le sourire et de bons conseils. Qu’Allah lui mette
+                davantage la baraka. »
+              </div>
+              <div class="reviewFooter">Visite il y a 2 mois</div>
+            </div>
+
+            <div class="reviewCard">
+              <div class="reviewHead">
+                <div>
+                  <div class="reviewName">Client Google</div>
+                  <div class="reviewSource">Avis Google</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="reviewText">
+                « Très agréable, heureusement que nous avons cette boutique très
+                enrichissante. Bonne continuation. »
+              </div>
+              <div class="reviewFooter">Visite il y a 6 mois</div>
+            </div>
+
+            <div class="reviewCard">
+              <div class="reviewHead">
+                <div>
+                  <div class="reviewName">Client Google</div>
+                  <div class="reviewSource">Avis Google</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="reviewText">
+                « Une mine d’or. Toujours bien accueilli et bien conseillé. »
+              </div>
+              <div class="reviewFooter">Visite il y a 3 mois</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="venir">
+          <div class="visit">
+            <div class="sectionHead" style="margin-bottom: 10px">
+              <div>
+                <h3>Infos & accès</h3>
+                <p>
+                  Retrouvez-nous en boutique. Pour une demande précise,
+                  contactez-nous par téléphone.
+                </p>
+              </div>
+            </div>
+
+            <div class="visitGrid">
+              <div class="map">
+                <iframe
+                  title="Carte Google Maps Nour Al Hidaya"
+                  src="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+
+              <div class="contactCards">
+                <div class="contactCard">
+                  <b>Adresse</b>
+                  <small>1 Imp. Julian Grimau, 78190 Trappes</small>
+                </div>
+
+                <div class="contactCard">
+                  <b>Horaires</b>
+                  <small>Mardi : 10h30–13h00, 14h30–19h00</small>
+                  <small>Mercredi : 10h30–13h00, 14h30–19h00</small>
+                  <small>Jeudi : 10h30–13h00, 14h30–19h30</small>
+                  <small>Vendredi : 10h30–12h30, 14h30–19h30</small>
+                  <small>Samedi : 10h30–13h00, 14h30–19h30</small>
+                  <small>Dimanche : 10h30–13h00, 14h30–19h30</small>
+                  <small>Lundi : Fermé</small>
+                </div>
+
+                <div class="contactCard">
+                  <b>Contact</b>
+                  <small>
+                    Téléphone :
+                    <a href="tel:0130501712"><span>01 30 50 17 12</span></a>
+                  </small>
+                </div>
+
+                <div style="display: flex; gap: 10px; flex-wrap: wrap">
+                  <a
+                    class="btn primary"
+                    target="_blank"
+                    href="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes"
+                  >
+                    Itinéraire
+                  </a>
+                  <a class="btn" href="mentions-legales.html"
+                    >Mentions légales</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="footerInner">
+            <div>
+              © <span id="year"></span> Nour Al Hidaya<br />
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap">
+              <a href="mentions-legales.html">Mentions légales</a>
+              <a href="#venir">Contact & accès</a>
+              <a
+                href="https://www.facebook.com/NourAlHidaya78190/?locale=fr_FR"
+                target="_blank"
+                class="social facebook"
+              >
+                Facebook
+              </a>
+              <a
+                href="https://www.instagram.com/maktabahanafi/"
+                target="_blank"
+                class="social instagram"
+              >
+                Instagram
+              </a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightboxClose" id="lbClose" aria-label="Fermer">✕</button>
+      <img id="lbImg" alt="Image en grand" />
+    </div>
+
+    <div class="toast" id="socialToast" role="dialog" aria-live="polite">
+      <button class="toastClose" aria-label="Fermer">✕</button>
+
+      <div class="toastContent">
+        <b>Restons connectés 🤖</b>
         <p>
-          Chaque semaine, de nouvelles références arrivent en rayon :
-          ouvrages, senteurs, accessoires et idées cadeaux soigneusement sélectionnés.
+          Suivez-nous sur les réseaux et partagez votre avis, cela nous aide
+          énormément 🙏
         </p>
 
-       
-      </div>
+        <div class="toastActions">
+          <a
+            href="https://www.instagram.com/maktabahanafi/"
+            target="_blank"
+            class="toastBtn ig"
+          >
+            Instagram
+          </a>
 
-      <div class="promoVisual" aria-hidden="true"></div>
-    </div>
-  </div>
-</section>
+          <a
+            href="https://www.facebook.com/NourAlHidaya78190/"
+            target="_blank"
+            class="toastBtn fb"
+          >
+            Facebook
+          </a>
 
-
-    <section id="phares">
-      <div class="sectionHead">
-        <div>
-          <h3>Un large choix d'articles</h3>
-          <p>Cliquez sur une carte pour voir l’image en grand. Et venez découvrir tout le reste en boutique.</p>
-        </div>
-        <a class="btn" href="#venir">Adresse & horaires</a>
-      </div>
-
-      <div class="products">
-        <article class="product zoomable" data-img="assets/p1.jpg" role="button" tabindex="0" aria-label="Voir l'image Corans et livres en grand">
-          <div class="img"><img src="assets/p1.jpg" alt="Corans et livres"></div>
-          <div class="cardPad">
-            <h4>Corans & livres</h4>
-            <p>Corans, livres de sciences religieuses, ouvrages d’histoire, romans et lectures pour tous les niveaux sont disponibles directement en magasin.</p>
-            <div class="pill">Voir en grand</div>
-          </div>
-        </article>
-
-        <article class="product zoomable" data-img="assets/p2.jpg" role="button" tabindex="0" aria-label="Voir l'image Parfums et bien-être en grand">
-          <div class="img"><img src="assets/p2.jpg" alt="Parfums et bien-être"></div>
-          <div class="cardPad">
-            <h4>Parfums & bien-être</h4>
-            <p>Parfums, musk, huiles parfumées et miel, à découvrir et tester directement en boutique.</p>
-            <div class="pill">Voir en grand</div>
-          </div>
-        </article>
-
-        <article class="product zoomable" data-img="assets/p3.jpg" role="button" tabindex="0" aria-label="Voir l'image Articles et vêtements en grand">
-          <div class="img"><img src="assets/p3.jpg" alt="Articles et vêtements"></div>
-          <div class="cardPad">
-            <h4>Articles & vêtements</h4>
-            <p>Tapis de prière, tasbih, encens et vêtements pour femmes, hommes et enfants, à découvrir directement en boutique.</p>
-            <div class="pill">Voir en grand</div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- NOUVELLE SECTION : met en valeur sans prendre trop de place -->
-    <section id="univers">
-      <div class="sectionHead">
-        <div>
-          <h3>Univers de la librairie</h3>
-          <p>Un aperçu visuel de ce que vous trouverez sur place — cliquez pour voir les photos en grand.</p>
-        </div>
-      </div>
-
-      <div class="universGrid">
-        <div class="uCard zoomable" data-img="assets/slide3.jpg" role="button" tabindex="0" aria-label="Voir Vêtements femme en grand">
-          <div class="uImg" style="background-image:url('assets/slide3.jpg')"></div>
-          <div class="uShade"></div>
-          <div class="uLabel"><b>Femme</b><span>Vêtements</span></div>
+          <a
+            href="https://www.google.com/search?q=nour+al+hidaya+trappes+avis"
+            target="_blank"
+            class="toastBtn ghost"
+          >
+            Laisser un avis
+          </a>
         </div>
 
-        <div class="uCard zoomable" data-img="assets/slide2.jpg" role="button" tabindex="0" aria-label="Voir Vêtements homme en grand">
-          <div class="uImg" style="background-image:url('assets/slide2.jpg')"></div>
-          <div class="uShade"></div>
-          <div class="uLabel"><b>Homme</b><span>Vêtements</span></div>
-        </div>
+        <div
+          style="
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.55);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+          "
+        >
+          <span>Site conçu par</span>
+          <a
+            href="https://www.instagram.com/byseym_/"
+            target="_blank"
+            rel="noopener"
+            style="font-weight: 600; text-decoration: none; color: #e4405f"
+          >
+            BySeym
+          </a>
 
-        <div class="uCard zoomable" data-img="assets/slide4.jpg" role="button" tabindex="0" aria-label="Voir Enfant en grand">
-          <div class="uImg" style="background-image:url('assets/slide4.jpg')"></div>
-          <div class="uShade"></div>
-          <div class="uLabel"><b>Enfant</b><span>Vêtements</span></div>
-        </div>
-
-        <div class="uCard zoomable" data-img="assets/p2.jpg" role="button" tabindex="0" aria-label="Voir Parfums et senteurs en grand">
-          <div class="uImg" style="background-image:url('assets/p2.jpg')"></div>
-          <div class="uShade"></div>
-          <div class="uLabel"><b>Parfums</b><span>Senteurs</span></div>
-        </div>
-
-        <div class="uCard zoomable" data-img="assets/slide5.jpg" role="button" tabindex="0" aria-label="Voir Trésors et accessoires en grand">
-          <div class="uImg" style="background-image:url('assets/slide5.jpg')"></div>
-          <div class="uShade"></div>
-          <div class="uLabel"><b>Encens</b><span>Accessoires</span></div>
-        </div>
-
-        <div class="uCard zoomable" data-img="assets/slide1.jpg" role="button" tabindex="0" aria-label="Voir Livres et rayons en grand">
-          <div class="uImg" style="background-image:url('assets/slide1.jpg')"></div>
-          <div class="uShade"></div>
-          <div class="uLabel"><b>Livres</b><span>Rayons</span></div>
+          <span>• Logo par</span>
+          <a
+            href="https://www.instagram.com/moumouuch_/"
+            target="_blank"
+            rel="noopener"
+            style="font-weight: 600; text-decoration: none; color: #e4405f"
+          >
+            Moumouch
+          </a>
         </div>
       </div>
-    </section>
-
-<section id="avis">
-  <div class="sectionHead">
-    <div>
-      <h3>Avis clients</h3>
-      <p>⭐ 4,7 / 5 — 218 avis Google. Ce que disent nos clients après leur visite.</p>
-    </div>
-    <a class="btn" target="_blank"
-       href="https://www.google.com/search?sca_esv=27bf74d1c97a8942&q=nour+al+hidaya+trapppes&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s04D3SwwF-_df957BkiVxDRNhP4MXL4t63Vjl8BnNRnc5iONvb600Y-GfhRhSZNVM2Yx41Y%3D&uds=AOm0WdEpNcp6pEjRdta6g1dVDwXuY1YdXYhHKndPkK7THIGApRjcewWmE3e1WuFW8oLmQ2KscKOVZFNGm0Gn-SRVFONppZEowiAMcuT6ycM0N5c9Mxxub_uWOj-rJb89QfUumhh37C3A&sa=X&ved=2ahUKEwiGvYXdzcSRAxV-KvsDHfjsMYUQ3PALegQIGRAE&biw=1536&bih=730&dpr=1.25">
-      Voir tous les avis
-    </a>
-  </div>
-
-  <div class="reviews">
-    <div class="reviewCard">
-      <div class="reviewHead">
-        <div>
-          <div class="reviewName">Client Google</div>
-          <div class="reviewSource">Avis Google</div>
-        </div>
-        <div class="stars">★★★★★</div>
-      </div>
-      <div class="reviewText">
-        « Excellente librairie, on s’y sent apaisé et le gérant est toujours avec le sourire et de bons conseils. Qu’Allah lui mette davantage la baraka. »
-      </div>
-      <div class="reviewFooter">Visite il y a 2 mois</div>
     </div>
 
-    <div class="reviewCard">
-      <div class="reviewHead">
-        <div>
-          <div class="reviewName">Client Google</div>
-          <div class="reviewSource">Avis Google</div>
-        </div>
-        <div class="stars">★★★★★</div>
-      </div>
-      <div class="reviewText">
-        « Très agréable, heureusement que nous avons cette boutique très enrichissante. Bonne continuation. »
-      </div>
-      <div class="reviewFooter">Visite il y a 6 mois</div>
-    </div>
-
-    <div class="reviewCard">
-      <div class="reviewHead">
-        <div>
-          <div class="reviewName">Client Google</div>
-          <div class="reviewSource">Avis Google</div>
-        </div>
-        <div class="stars">★★★★★</div>
-      </div>
-      <div class="reviewText">
-        « Une mine d’or. Toujours bien accueilli et bien conseillé. »
-      </div>
-      <div class="reviewFooter">Visite il y a 3 mois</div>
-    </div>
-  </div>
-</section>
-
-
-    <section id="venir">
-      <div class="visit">
-        <div class="sectionHead" style="margin-bottom:10px">
-          <div>
-            <h3>Infos & accès</h3>
-            <p>Retrouvez-nous en boutique. Pour une demande précise, contactez-nous par téléphone.</p>
-          </div>
-        </div>
-
-        <div class="visitGrid">
-          <div class="map">
-            <iframe
-              title="Carte Google Maps Nour Al Hidaya"
-              src="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-
-          <div class="contactCards">
-            <div class="contactCard">
-              <b>Adresse</b>
-              <small>1 Imp. Julian Grimau, 78190 Trappes</small>
-            </div>
-
-            <div class="contactCard">
-              <b>Horaires</b>
-              <small>Mardi : 10h30–13h00, 14h30–19h00</small>
-              <small>Mercredi : 10h30–13h00, 14h30–19h00</small>
-              <small>Jeudi : 10h30–13h00, 14h30–19h30</small>
-              <small>Vendredi : 10h30–12h30, 14h30–19h30</small>
-              <small>Samedi : 10h30–13h00, 14h30–19h30</small>
-              <small>Dimanche : 10h30–13h00, 14h30–19h30</small>
-              <small>Lundi : Fermé</small>
-            </div>
-
-            <div class="contactCard">
-              <b>Contact</b>
-              <small>
-  Téléphone :
-  <a href="tel:0130501712"><span>01 30 50 17 12</span></a>
-</small>
-
-            </div>
-
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn primary" target="_blank"
-                 href="https://www.google.com/maps?q=1%20Imp.%20Julian%20Grimau%2C%2078190%20Trappes">
-                Itinéraire
-              </a>
-              <a class="btn" href="mentions-legales.html">Mentions légales</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="footerInner">
-        <div>
-  © <span id="year"></span> Nour Al Hidaya<br>
-  <!-- <a href="https://www.instagram.com/byseym_/" 
-     target="_blank" 
-     rel="noopener"
-     class="byseym">
-    BySeym
-  </a> -->
-</div>
-
-
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a href="mentions-legales.html">Mentions légales</a>
-          <a href="#venir">Contact & accès</a>
-          <a href="https://www.facebook.com/NourAlHidaya78190/?locale=fr_FR" target="_blank" class="social facebook">
-  Facebook
-</a>
-<a href="https://www.instagram.com/maktabahanafi/" target="_blank" class="social instagram">
-  Instagram
-</a>
-
-        </div>
-      </div>
-    </footer>
-
-  </div>
-</main>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightboxClose" id="lbClose" aria-label="Fermer">✕</button>
-  <img id="lbImg" alt="Image en grand">
-</div>
-
-
-
-
-
-
-<div class="toast" id="socialToast" role="dialog" aria-live="polite">
-  <button class="toastClose" aria-label="Fermer">✕</button>
-
-  <div class="toastContent">
-    <b>Restons connectés 🤖</b>
-    <p>
-      Suivez-nous sur les réseaux et partagez votre avis,
-      cela nous aide énormément 🙏
-    </p>
-
-    <div class="toastActions">
-      <a href="https://www.instagram.com/maktabahanafi/"
-         target="_blank"
-         class="toastBtn ig">
-        Instagram
-      </a>
-
-      <a href="https://www.facebook.com/NourAlHidaya78190/"
-         target="_blank"
-         class="toastBtn fb">
-        Facebook
-      </a>
-
-      <a href="https://www.google.com/search?q=nour+al+hidaya+trappes+avis"
-         target="_blank"
-         class="toastBtn ghost">
-        Laisser un avis
-      </a>
-    </div>
-
- 
-    <div style="
-      margin-top:14px;
-      padding-top:10px;
-      border-top:1px solid rgba(0,0,0,.08);
-      font-size:.75rem;
-      color:rgba(0,0,0,.55);
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-    ">
-      <span>Site conçu par</span>
-      <a href="https://www.instagram.com/byseym_/"
-         target="_blank"
-         rel="noopener"
-         style="
-           font-weight:600;
-           text-decoration:none;
-           color:#E4405F;
-         ">
-        BySeym
-      </a>
-
-      <span>• Logo par</span>
-      <a href="https://www.instagram.com/moumouuch_/"
-         target="_blank"
-         rel="noopener"
-         style="
-           font-weight:600;
-           text-decoration:none;
-           color:#E4405F;
-         ">
-        Moumouch
-      </a>
-    </div>
-  </div>
-</div>
-
-
-  
-
-<script src="main.js" defer></script>
-</body>
+    <script src="main.js" defer></script>
+  </body>
 </html>

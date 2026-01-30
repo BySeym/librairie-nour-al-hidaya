@@ -1,10 +1,9 @@
-
 // ===========================
 // GESTION DU CAROUSEL
 // ===========================
-(function() {
+(function () {
   const tableBody = document.getElementById("carouselTable");
-  
+
   if (!tableBody) {
     console.log("ℹ️ Table carousel non trouvée (page non-admin)");
     return;
@@ -15,21 +14,20 @@
   async function loadCarousel() {
     try {
       const res = await fetch("http://localhost:3000/api/carousel");
-      
+
       if (!res.ok) {
         console.error("❌ Erreur chargement carousel:", res.status);
         return;
       }
-      
+
       const slides = await res.json();
       console.log("📊 Carousel chargé:", slides.length, "slides");
 
       tableBody.innerHTML = "";
 
-      slides.forEach(slide => {
+      slides.forEach((slide) => {
         const tr = document.createElement("tr");
 
-        // ✅ Ajouter timestamp pour éviter le cache
         const timestamp = Date.now();
         const imagePath = `http://localhost:3000/uploads/${slide.image}?t=${timestamp}`;
 
@@ -71,30 +69,30 @@
 
     fetch(`http://localhost:3000/api/carousel/${slide.id}`, {
       method: "PUT",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${window.ADMIN_TOKEN}`
+        Authorization: `Bearer ${window.ADMIN_TOKEN}`,
       },
       body: JSON.stringify({
         image: slide.image,
         title,
         description,
-        position
+        position,
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
       })
-    })
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json();
-    })
-    .then(data => {
-      console.log("✅ Slide mise à jour:", data);
-      alert("✅ Slide mise à jour avec succès !");
-      loadCarousel();
-    })
-    .catch(err => {
-      console.error("❌ Erreur mise à jour:", err);
-      alert("❌ Erreur lors de la mise à jour");
-    });
+      .then((data) => {
+        console.log("✅ Slide mise à jour:", data);
+        alert("✅ Slide mise à jour avec succès !");
+        loadCarousel();
+      })
+      .catch((err) => {
+        console.error("❌ Erreur mise à jour:", err);
+        alert("❌ Erreur lors de la mise à jour");
+      });
   }
 
   function deleteSlide(id) {
@@ -103,30 +101,28 @@
     fetch(`http://localhost:3000/api/carousel/${id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${window.ADMIN_TOKEN}`
-      }
+        Authorization: `Bearer ${window.ADMIN_TOKEN}`,
+      },
     })
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json();
-    })
-    .then(() => {
-      console.log("✅ Slide supprimée");
-      alert("✅ Slide supprimée avec succès !");
-      loadCarousel();
-    })
-    .catch(err => {
-      console.error("❌ Erreur suppression:", err);
-      alert("❌ Erreur lors de la suppression");
-    });
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(() => {
+        console.log("✅ Slide supprimée");
+        alert("✅ Slide supprimée avec succès !");
+        loadCarousel();
+      })
+      .catch((err) => {
+        console.error("❌ Erreur suppression:", err);
+        alert("❌ Erreur lors de la suppression");
+      });
   }
 
-  // Charger au démarrage
   loadCarousel();
 
-  // Gestion du formulaire d'ajout
   const form = document.getElementById("addSlideForm");
-  
+
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -146,9 +142,9 @@
         const response = await fetch("http://localhost:3000/api/carousel", {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${window.ADMIN_TOKEN}`
+            Authorization: `Bearer ${window.ADMIN_TOKEN}`,
           },
-          body: formData
+          body: formData,
         });
 
         const data = await response.json();
@@ -157,13 +153,12 @@
         if (response.ok) {
           alert("✅ Slide ajoutée avec succès !");
           form.reset();
-          
-          // Réinitialiser l'aperçu
+
           const previewImage = document.getElementById("previewImage");
           if (previewImage) {
             previewImage.style.display = "none";
           }
-          
+
           loadCarousel();
         } else {
           alert("❌ Erreur: " + (data.message || "Erreur inconnue"));
@@ -175,7 +170,6 @@
     });
   }
 
-  // Gestion de l'aperçu de l'image
   const imageInput = document.getElementById("imageInput");
   const previewImage = document.getElementById("previewImage");
 
