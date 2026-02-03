@@ -183,7 +183,7 @@ router.put(
       });
 
     } catch (err) {
-      console.error("❌ Erreur UPDATE promo:", err);
+      console.error("❌ Erreur UPDATE promo !:", err);
       res.status(500).json({ message: "Erreur serveur" });
     }
   }
