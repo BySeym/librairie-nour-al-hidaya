@@ -165,7 +165,7 @@ async function loadCarousel() {
     slides.forEach(slide => {
       const div = document.createElement("div");
       div.className = "slide";
-      div.style.backgroundImage = `url('${window.API_URL}/uploads/${slide.image}')`;
+      div.style.backgroundImage = `url(`${window.API_URL}/uploads/${slide.image}')`;
       track.appendChild(div);
     });
 
@@ -336,7 +336,7 @@ loadPromo();
 
    article.innerHTML =  `
   <div class="productVisual"
-       style="--product-image: url('${window.API_URL}/uploads/${item.image}')">
+       style="--product-image: url(`${window.API_URL}/uploads/${item.image}')">
   </div>
       <div class="cardPad">
         <h4>${item.title}</h4>

@@ -27,7 +27,7 @@
 
   async function verifyToken(token) {
     try {
-      const response = await fetch('${window.API_URL}/api/auth/verify', {
+      const response = await fetch(`${window.API_URL}/api/auth/verify`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
