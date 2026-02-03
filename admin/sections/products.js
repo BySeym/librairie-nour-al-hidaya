@@ -13,7 +13,7 @@
 
   async function loadProducts() {
     try {
-      const res = await fetch("http://localhost:3000/api/products-section");
+      const res = await fetch("${window.API_URL}/api/products-section");
 
       if (!res.ok) {
         console.error("❌ Erreur chargement produits:", res.status);
@@ -26,7 +26,7 @@
       items.forEach((item) => {
         const tr = document.createElement("tr");
         const timestamp = Date.now();
-        const imagePath = `http://localhost:3000/uploads/${item.image}?t=${timestamp}`;
+        const imagePath = `${window.API_URL}/uploads/${item.image}?t=${timestamp}`;
 
         tr.innerHTML = `
           <td>${item.id}</td>
@@ -66,7 +66,7 @@
     const position = prompt("Position :", item.position);
     if (position === null) return;
 
-    fetch(`http://localhost:3000/api/products-section/${item.id}`, {
+    fetch(`${window.API_URL}/api/products-section/${item.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@
   function deleteProduct(id) {
     if (!confirm("Supprimer cette carte ?")) return;
 
-    fetch(`http://localhost:3000/api/products-section/${id}`, {
+    fetch(`${window.API_URL}/api/products-section/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${window.ADMIN_TOKEN}`,
@@ -126,7 +126,7 @@
 
       try {
         const res = await fetch(
-          "http://localhost:3000/api/products-section",
+          "${window.API_URL}/api/products-section",
           {
             method: "POST",
             headers: {

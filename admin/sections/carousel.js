@@ -13,7 +13,7 @@
 
   async function loadCarousel() {
     try {
-      const res = await fetch("http://localhost:3000/api/carousel");
+      const res = await fetch("${window.API_URL}/api/carousel");
 
       if (!res.ok) {
         console.error("❌ Erreur chargement carousel:", res.status);
@@ -29,7 +29,7 @@
         const tr = document.createElement("tr");
 
         const timestamp = Date.now();
-        const imagePath = `http://localhost:3000/uploads/${slide.image}?t=${timestamp}`;
+        const imagePath = `${window.API_URL}/uploads/${slide.image}?t=${timestamp}`;
 
         tr.innerHTML = `
           <td>${slide.id}</td>
@@ -67,7 +67,7 @@
     const position = prompt("Position :", slide.position);
     if (position === null) return;
 
-    fetch(`http://localhost:3000/api/carousel/${slide.id}`, {
+    fetch(`${window.API_URL}/api/carousel/${slide.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@
   function deleteSlide(id) {
     if (!confirm("Supprimer cette slide ?")) return;
 
-    fetch(`http://localhost:3000/api/carousel/${id}`, {
+    fetch(`${window.API_URL}/api/carousel/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${window.ADMIN_TOKEN}`,
@@ -139,7 +139,7 @@
       }
 
       try {
-        const response = await fetch("http://localhost:3000/api/carousel", {
+        const response = await fetch("${window.API_URL}/api/carousel", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${window.ADMIN_TOKEN}`,

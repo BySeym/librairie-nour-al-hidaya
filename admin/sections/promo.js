@@ -12,7 +12,7 @@
 
   async function loadCurrentPromo() {
     try {
-      const res = await fetch("http://localhost:3000/api/promo");
+      const res = await fetch("${window.API_URL}/api/promo");
 
       if (!res.ok) {
         console.error("❌ Erreur chargement promo:", res.status);
@@ -28,7 +28,7 @@
 
       const preview = document.getElementById("currentImage");
       if (preview && promo.image) {
-        const imageUrl = `http://localhost:3000/uploads/${promo.image}?t=${Date.now()}`;
+        const imageUrl = `${window.API_URL}/uploads/${promo.image}?t=${Date.now()}`;
         preview.src = imageUrl;
         preview.style.display = "block";
         console.log("🖼️ Image actuelle affichée:", imageUrl);
@@ -55,7 +55,7 @@
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/promo", {
+      const response = await fetch("${window.API_URL}/api/promo", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${window.ADMIN_TOKEN}`,
@@ -72,7 +72,7 @@
         if (data.image) {
           const preview = document.getElementById("currentImage");
           if (preview) {
-            const imageUrl = `http://localhost:3000/uploads/${data.image}?t=${data.timestamp || Date.now()}`;
+            const imageUrl = `${window.API_URL}/uploads/${data.image}?t=${data.timestamp || Date.now()}`;
             preview.src = imageUrl;
             preview.style.display = "block";
             console.log("🔄 Image mise à jour:", imageUrl);
@@ -101,7 +101,7 @@ async function loadPromo() {
   console.log("🔄 Chargement de la promo...");
 
   try {
-    const res = await fetch("http://localhost:3000/api/promo");
+    const res = await fetch("${window.API_URL}/api/promo");
 
     if (!res.ok) {
       console.error("❌ Erreur HTTP:", res.status);
@@ -132,7 +132,7 @@ async function loadPromo() {
     }
 
     const timestamp = Date.now();
-    const imageUrl = `http://localhost:3000/uploads/${promo.image}?t=${timestamp}`;
+    const imageUrl = `${window.API_URL}/uploads/${promo.image}?t=${timestamp}`;
     console.log("🖼️ URL image finale:", imageUrl);
 
     promoVisual.style.setProperty("--promo-image", `url("${imageUrl}")`);

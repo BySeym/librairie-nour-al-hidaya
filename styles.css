@@ -1048,24 +1048,6 @@ section {
   );
   transform: translateX(4px);
 }
-/* 
-.product .cardPad p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.6;
-
-  white-space: normal;   
-
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6;
-  line-clamp: 6;
-
-  overflow: hidden;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-} */
 
 .product .cardPad p {
   font-size: 0.95rem;

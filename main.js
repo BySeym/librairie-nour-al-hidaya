@@ -137,7 +137,7 @@ async function loadCarousel() {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/api/carousel");
+    const res = await fetch("${window.API_URL}/api/carousel");
     
     if (!res.ok) {
       console.error("❌ Erreur API carousel:", res.status);
@@ -165,7 +165,7 @@ async function loadCarousel() {
     slides.forEach(slide => {
       const div = document.createElement("div");
       div.className = "slide";
-      div.style.backgroundImage = `url('http://localhost:3000/uploads/${slide.image}')`;
+      div.style.backgroundImage = `url('${window.API_URL}/uploads/${slide.image}')`;
       track.appendChild(div);
     });
 
@@ -247,7 +247,7 @@ async function loadPromo() {
   console.log("🔄 Chargement de la promo...");
   
   try {
-    const res = await fetch("http://localhost:3000/api/promo");
+    const res = await fetch("${window.API_URL}/api/promo");
     
     if (!res.ok) {
       console.error("❌ Erreur HTTP promo:", res.status);
@@ -281,7 +281,7 @@ async function loadPromo() {
 
     // ✅ URL avec timestamp pour éviter le cache
     const timestamp = Date.now();
-    const imageUrl = `http://localhost:3000/uploads/${promo.image}?t=${timestamp}`;
+    const imageUrl = `${window.API_URL}/uploads/${promo.image}?t=${timestamp}`;
     console.log("🖼️ URL image finale:", imageUrl);
 
     // Appliquer via variable CSS
@@ -322,7 +322,7 @@ loadPromo();
   const container = document.getElementById("productsSection");
   if (!container) return;
 
-  const res = await fetch("http://localhost:3000/api/products-section");
+  const res = await fetch("${window.API_URL}/api/products-section");
   const items = await res.json();
 
   container.innerHTML = "";
@@ -330,13 +330,13 @@ loadPromo();
  items.slice(0, 15).forEach((item) => {
     const article = document.createElement("article");
     article.className = "product zoomable";
-    article.dataset.img = `http://localhost:3000/uploads/${item.image}`;
+    article.dataset.img = `${window.API_URL}/uploads/${item.image}`;
     article.setAttribute("role", "button");
     article.setAttribute("tabindex", "0");
 
    article.innerHTML =  `
   <div class="productVisual"
-       style="--product-image: url('http://localhost:3000/uploads/${item.image}')">
+       style="--product-image: url('${window.API_URL}/uploads/${item.image}')">
   </div>
       <div class="cardPad">
         <h4>${item.title}</h4>
