@@ -13,7 +13,7 @@
 
   async function loadProducts() {
     try {
-      const res = await fetch("${window.API_URL}/api/products-section");
+      const res = await fetch(`${window.API_URL}/api/products-section`);
 
       if (!res.ok) {
         console.error("❌ Erreur chargement produits:", res.status);
@@ -126,7 +126,7 @@
 
       try {
         const res = await fetch(
-          "${window.API_URL}/api/products-section",
+          `${window.API_URL}/api/products-section`,
           {
             method: "POST",
             headers: {

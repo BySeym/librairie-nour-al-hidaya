@@ -13,7 +13,7 @@
 
   async function loadCarousel() {
     try {
-      const res = await fetch("${window.API_URL}/api/carousel");
+      const res = await fetch(`${window.API_URL}/api/carousel`);
 
       if (!res.ok) {
         console.error("❌ Erreur chargement carousel:", res.status);
@@ -139,7 +139,7 @@
       }
 
       try {
-        const response = await fetch("${window.API_URL}/api/carousel", {
+        const response = await fetch(`${window.API_URL}/api/carousel`, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${window.ADMIN_TOKEN}`,

@@ -12,7 +12,7 @@
 
   async function loadCurrentPromo() {
     try {
-      const res = await fetch("${window.API_URL}/api/promo");
+      const res = await fetch(`${window.API_URL}/api/promo`);
 
       if (!res.ok) {
         console.error("❌ Erreur chargement promo:", res.status);
@@ -55,7 +55,7 @@
     }
 
     try {
-      const response = await fetch("${window.API_URL}/api/promo", {
+      const response = await fetch(`${window.API_URL}/api/promo`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${window.ADMIN_TOKEN}`,
@@ -101,7 +101,7 @@ async function loadPromo() {
   console.log("🔄 Chargement de la promo...");
 
   try {
-    const res = await fetch("${window.API_URL}/api/promo");
+    const res = await fetch(`${window.API_URL}/api/promo`);
 
     if (!res.ok) {
       console.error("❌ Erreur HTTP:", res.status);
