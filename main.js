@@ -137,7 +137,7 @@ async function loadCarousel() {
   }
 
   try {
-    const res = await fetch("${window.API_URL}/api/carousel");
+    const res = await fetch(`${window.API_URL}/api/carousel`);
     
     if (!res.ok) {
       console.error("❌ Erreur API carousel:", res.status);
@@ -247,7 +247,7 @@ async function loadPromo() {
   console.log("🔄 Chargement de la promo...");
   
   try {
-    const res = await fetch("${window.API_URL}/api/promo");
+    const res = await fetch(`${window.API_URL}/api/promo`);
     
     if (!res.ok) {
       console.error("❌ Erreur HTTP promo:", res.status);
@@ -322,7 +322,7 @@ loadPromo();
   const container = document.getElementById("productsSection");
   if (!container) return;
 
-  const res = await fetch("${window.API_URL}/api/products-section");
+  const res = await fetch(`${window.API_URL}/api/products-section`);
   const items = await res.json();
 
   container.innerHTML = "";
