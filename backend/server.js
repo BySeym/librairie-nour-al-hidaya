@@ -16,17 +16,6 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-
-// 🔁 Redirection auto localhost -> domaine Render
-app.use((req, res, next) => {
-  if (req.headers.host && req.headers.host.includes("onrender.com")) {
-    req.url = req.url.replace("http://localhost:3000", "");
-  }
-  next();
-});
-
-
-
 app.use(cors());
 app.use(express.json());
 
@@ -66,16 +55,6 @@ const PORT = process.env.PORT || 3000;
 
 // 🧥 Product
 app.use("/api/products-section", productsSectionRoutes);
-
-// 🖼️ FRONT (le dossier parent du backend)
-const FRONT_DIR = path.join(__dirname, "..");
-
-app.use(express.static(FRONT_DIR));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(FRONT_DIR, "index.html"));
-});
-
 
 
 app.listen(PORT, () => {

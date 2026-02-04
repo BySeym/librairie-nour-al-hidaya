@@ -1,10 +1,3 @@
-window.API_URL = window.location.origin;
-
-
-
-
-
-
 // Année auto
 document.getElementById("year").textContent = new Date().getFullYear();
 
