@@ -56,6 +56,15 @@ const PORT = process.env.PORT || 3000;
 // 🧥 Product
 app.use("/api/products-section", productsSectionRoutes);
 
+// 🖼️ FRONT (HTML / CSS / JS)
+app.use(express.static(__dirname));
+
+// 🏠 Page d’accueil
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+
 app.listen(PORT, () => {
   console.log(`Backend lancé sur http://localhost:${PORT}`);
   console.log(`📁 Uploads disponibles sur http://localhost:${PORT}/uploads/`);
