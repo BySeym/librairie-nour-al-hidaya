@@ -6,20 +6,26 @@ package-lock.json
 .env
 .env.local
 .env.production
+.env.development
+.env.test
 
 # Uploads
 backend/uploads/
 uploads/
+public/uploads/
 
 # Logs
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 logs/
 
 # OS
 .DS_Store
 Thumbs.db
 desktop.ini
+*.bak
 
 # IDE
 .vscode/
@@ -27,12 +33,54 @@ desktop.ini
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
 
 # Cache
 .cache/
 dist/
 build/
+.next/
+.nuxt/
 
 # Temporaires
 *.tmp
 *.temp
+
+# Sécurité - Fichiers avec mots de passe
+backend/hash.js
+hash.js
+test_login.js
+backend/test_login.js
+
+# Base de données
+*.sql
+*.dump
+*.sqlite
+*.db
+backup/
+backups/
+db_backup/
+
+# Certificats et clés
+*.key
+*.pem
+*.crt
+*.cert
+*.p12
+*.pfx
+
+# Tests
+coverage/
+.nyc_output/
+*.lcov
+
+# PM2
+.pm2/
+pids/
+*.pid
+*.seed
+
+# Debug
+debug.log
+.eslintcache

@@ -1,6 +1,8 @@
 import bcrypt from "bcrypt";
 
-const password = "*admin123*"; // ← mot de passe de ton choix
+const password = "19The79Wall"; 
 
 const hash = await bcrypt.hash(password, 10);
 console.log(hash);
+
+
