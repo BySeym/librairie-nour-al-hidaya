@@ -56,13 +56,15 @@ const PORT = process.env.PORT || 3000;
 // 🧥 Product
 app.use("/api/products-section", productsSectionRoutes);
 
-// 🖼️ FRONT (HTML / CSS / JS)
-app.use(express.static(__dirname));
+// 🖼️ FRONT (le dossier parent du backend)
+const FRONT_DIR = path.join(__dirname, "..");
 
-// 🏠 Page d’accueil
+app.use(express.static(FRONT_DIR));
+
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(FRONT_DIR, "index.html"));
 });
+
 
 
 app.listen(PORT, () => {
