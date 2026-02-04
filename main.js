@@ -375,3 +375,26 @@ document.getElementById("imageModal")?.addEventListener("click", () => {
   modalImg.src = "";
 });
 
+
+
+// À ajouter à la fin de votre fichier HTML ou dans un fichier .js séparé
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('heroVideo');
+  const muteBtn = document.getElementById('muteBtn');
+  const iconMuted = muteBtn.querySelector('.icon-muted');
+  const iconUnmuted = muteBtn.querySelector('.icon-unmuted');
+
+  muteBtn.addEventListener('click', function() {
+    if (video.muted) {
+      video.muted = false;
+      iconMuted.style.display = 'none';
+      iconUnmuted.style.display = 'block';
+      muteBtn.setAttribute('aria-label', 'Couper le son');
+    } else {
+      video.muted = true;
+      iconMuted.style.display = 'block';
+      iconUnmuted.style.display = 'none';
+      muteBtn.setAttribute('aria-label', 'Activer le son');
+    }
+  });
+});

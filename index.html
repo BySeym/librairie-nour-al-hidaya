@@ -83,7 +83,7 @@
 
       <div class="car-dots" id="dots" aria-label="Navigation du carousel"></div>
 
-      <div class="car-overlay">
+      <!-- <div class="car-overlay">
         <div class="container">
           <div class="car-text">
             <span class="car-pill">Nour Al Hidaya • Trappes</span>
@@ -155,7 +155,94 @@
                 </div>
               </div>
             </div>
+          </div> -->
+
+<div class="car-overlay">
+        <div class="container">
+          <div class="car-text">
+            <span class="car-pill">Nour Al Hidaya • Trappes</span>
+            <h2>Une librairie aux mille trésors</h2>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <main id="top">
+      <div class="container">
+        <section class="hero">
+          <div class="heroGrid">
+            <div class="heroLeft">
+              <div class="badge">
+                <span class="badge-icon">✦</span>
+                Sélection soignée • Conseils en boutique
+              </div>
+              <h2>Une librairie aux mille trésors, à explorer sur place</h2>
+              <p>
+                Ici, vous avez un aperçu. En boutique, c'est une vraie caverne
+                de découvertes : ouvrages, senteurs, cadeaux et trouvailles
+                choisies avec soin. Venez flâner et trouver ce qui vous
+                correspond.
+              </p>
+
+              <div class="heroActions">
+                <a class="btn primary" href="#venir">
+                  <span>Voir l'itinéraire</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </a>
+                <a class="btn secondary" href="#phares">Voir les produits phares</a>
+              </div>
+
+              <div class="chips" aria-label="Points forts">
+                <div class="chip"><span class="chip-dot"></span>Accueil & conseils</div>
+                <div class="chip"><span class="chip-dot"></span>Idées cadeaux</div>
+                <div class="chip"><span class="chip-dot"></span>Large choix en magasin</div>
+                <div class="chip"><span class="chip-dot"></span>Découvertes</div>
+              </div>
+            </div>
+
+           <div class="heroRight">
+  <div class="videoCard">
+    <div class="videoWrapper">
+      <video 
+        id="heroVideo"
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        poster="path/to/poster-image.jpg"
+      >
+        <source src="assets\video1.mp4" type="video/mp4">
+      </video>
+      
+      <button class="muteButton" id="muteBtn" aria-label="Activer le son">
+        <svg class="icon-muted" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="icon-unmuted" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+          <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M19.07 4.93C20.9447 6.80528 21.9979 9.34836 21.9979 12C21.9979 14.6516 20.9447 17.1947 19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      
+      <div class="videoGradient"></div>
+      <div class="videoOverlay">
+        <div class="videoBadge">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1L8.5 5.5L13 7L8.5 8.5L7 13L5.5 8.5L1 7L5.5 5.5L7 1Z" fill="currentColor"/>
+          </svg>
+          Ramadan 🌛
+        </div>
+        <h3>Préparez Ramadan</h3>
+        <p>Livres, déco & vêtements ...</p>
+      </div>
+    </div>
+  </div>
+</div>
         </section>
 
         <section class="promo">
@@ -187,117 +274,112 @@
             </div>
           
 </div>
-
 <div class="products" id="productsSection">
-
 </div>
-
 </section>
 
-          
+       <section id="univers">
+  <div class="sectionHead">
+    <div>
+      <h3>Univers de la librairie</h3>
+      <p>
+        Un aperçu visuel de ce que vous trouverez sur place 
+      </p>
+    </div>
+  </div>
 
-        <section id="univers">
-          <div class="sectionHead">
-            <div>
-              <h3>Univers de la librairie</h3>
-              <p>
-                Un aperçu visuel de ce que vous trouverez sur place 
-              </p>
-            </div>
-          </div>
+  <div class="universGrid">
+    <div
+      class="uCard zoomable"
+      data-img="assets/slide3.jpg"
+      role="button"
+      tabindex="0"
+      aria-label="Voir Vêtements femme en grand"
+    >
+      <div
+        class="uImg"
+        style="background-image: url('assets/slide3.jpg')"
+      ></div>
+      <div class="uShade"></div>
+      <div class="uLabel"><b>Femme</b><span>Hijab & Vêtements</span></div>
+    </div>
 
-          <div class="universGrid">
-            <div
-              class="uCard zoomable"
-              data-img="assets/slide3.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir Vêtements femme en grand"
-            >
-              <div
-                class="uImg"
-                style="background-image: url(&quot;assets/slide3.jpg&quot;)"
-              ></div>
-              <div class="uShade"></div>
-              <div class="uLabel"><b>Femme</b><span>Vêtements</span></div>
-            </div>
+    <div
+      class="uCard zoomable"
+      data-img="assets/slide2.jpg"
+      role="button"
+      tabindex="0"
+      aria-label="Voir Vêtements homme en grand"
+    >
+      <div
+        class="uImg"
+        style="background-image: url('assets/slide2.jpg')"
+      ></div>
+      <div class="uShade"></div>
+      <div class="uLabel"><b>Homme</b><span>Chachias & Vêtements</span></div>
+    </div>
 
-            <div
-              class="uCard zoomable"
-              data-img="assets/slide2.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir Vêtements homme en grand"
-            >
-              <div
-                class="uImg"
-                style="background-image: url(&quot;assets/slide2.jpg&quot;)"
-              ></div>
-              <div class="uShade"></div>
-              <div class="uLabel"><b>Homme</b><span>Vêtements</span></div>
-            </div>
+    <div
+      class="uCard zoomable"
+      data-img="assets/enfants.jpg"
+      role="button"
+      tabindex="0"
+      aria-label="Voir Enfant en grand"
+    >
+      <div
+        class="uImg"
+        style="background-image: url('assets/enfants.jpg')"
+      ></div>
+      <div class="uShade"></div>
+      <div class="uLabel"><b>Enfant</b><span>Livres & Jouets</span></div>
+    </div>
 
-            <div
-              class="uCard zoomable"
-              data-img="assets/slide4.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir Enfant en grand"
-            >
-              <div
-                class="uImg"
-                style="background-image: url(&quot;assets/slide4.jpg&quot;)"
-              ></div>
-              <div class="uShade"></div>
-              <div class="uLabel"><b>Enfant</b><span>Vêtements</span></div>
-            </div>
+    <div
+      class="uCard zoomable"
+      data-img="assets/msc.png"
+      role="button"
+      tabindex="0"
+      aria-label="Voir Parfums et senteurs en grand"
+    >
+      <div
+        class="uImg"
+        style="background-image: url('assets/msc.png')"
+      ></div>
+      <div class="uShade"></div>
+      <div class="uLabel"><b>Musc</b><span>Senteurs</span></div>
+    </div>
 
-            <div
-              class="uCard zoomable"
-              data-img="assets/p2.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir Parfums et senteurs en grand"
-            >
-              <div
-                class="uImg"
-                style="background-image: url(&quot;assets/p2.jpg&quot;)"
-              ></div>
-              <div class="uShade"></div>
-              <div class="uLabel"><b>Parfums</b><span>Senteurs</span></div>
-            </div>
+    <div
+      class="uCard zoomable"
+      data-img="assets/encen.png"
+      role="button"
+      tabindex="0"
+      aria-label="Voir Trésors et accessoires en grand"
+    >
+      <div
+        class="uImg"
+        style="background-image: url('assets/encen.png')"
+      ></div>
+      <div class="uShade"></div>
+      <div class="uLabel"><b>Encens</b><span>Senteurs</span></div>
+    </div>
 
-            <div
-              class="uCard zoomable"
-              data-img="assets/slide5.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir Trésors et accessoires en grand"
-            >
-              <div
-                class="uImg"
-                style="background-image: url(&quot;assets/encens.png&quot;)"
-              ></div>
-              <div class="uShade"></div>
-              <div class="uLabel"><b>Encens</b><span>Accessoires</span></div>
-            </div>
-
-            <div
-              class="uCard zoomable"
-              data-img="assets/slide1.jpg"
-              role="button"
-              tabindex="0"
-              aria-label="Voir Livres et rayons en grand"
-            >
-              <div
-                class="uImg"
-                style="background-image: url(&quot;assets/slide1.jpg&quot;)"
-              ></div>
-              <div class="uShade"></div>
-              <div class="uLabel"><b>Livres</b><span>Rayons</span></div>
-            </div>
-          </div>
-        </section>
+    <div
+      class="uCard zoomable"
+      data-img="assets/slide4.jpg"
+      role="button"
+      tabindex="0"
+      aria-label="Voir Livres et rayons en grand"
+    >
+      <div
+        class="uImg"
+        style="background-image: url('assets/slide4.jpg')"
+      ></div>
+      <div class="uShade"></div>
+      <div class="uLabel"><b>Livres</b><span>Spiritualité</span></div>
+    </div>
+  </div>
+</section>
 
         <section id="avis">
           <div class="sectionHead">
