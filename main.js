@@ -1,3 +1,26 @@
+// ✅ Patch prod: remplace automatiquement http://localhost:3000 par le domaine actuel (Render)
+const _fetch = window.fetch.bind(window);
+
+window.fetch = (input, init) => {
+  const origin = window.location.origin;
+
+  // input peut être une string ou un Request
+  if (typeof input === "string") {
+    const fixedUrl = input.replace("http://localhost:3000", origin);
+    return _fetch(fixedUrl, init);
+  }
+
+  // si c'est un Request
+  const fixedUrl = input.url.replace("http://localhost:3000", origin);
+  const fixedRequest = new Request(fixedUrl, input);
+  return _fetch(fixedRequest, init);
+};
+
+
+
+
+
+
 // Année auto
 document.getElementById("year").textContent = new Date().getFullYear();
 
