@@ -16,6 +16,17 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+
+// 🔁 Redirection auto localhost -> domaine Render
+app.use((req, res, next) => {
+  if (req.headers.host && req.headers.host.includes("onrender.com")) {
+    req.url = req.url.replace("http://localhost:3000", "");
+  }
+  next();
+});
+
+
+
 app.use(cors());
 app.use(express.json());
 
