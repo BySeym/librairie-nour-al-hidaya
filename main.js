@@ -53,7 +53,9 @@ function initCarousel(){
   const dotsWrap = document.getElementById('dots');
 
   if(!track) return;
-  const slides = Array.from(track.children);
+  // const slides = Array.from(track.children);
+  const slides = Array.from(track.children).slice(0, 3);
+
   const total = slides.length;
 
   if(total === 0) {
@@ -279,20 +281,20 @@ async function loadPromo() {
       return;
     }
 
-    // ✅ URL avec timestamp pour éviter le cache
+   
     const timestamp = Date.now();
     const imageUrl = `${window.API_URL}/uploads/${promo.image}?t=${timestamp}`;
     console.log("🖼️ URL image finale:", imageUrl);
 
-    // Appliquer via variable CSS
+  
     promoVisual.style.setProperty("--promo-image", `url("${imageUrl}")`);
     
-    // ✅ Forcer aussi en style direct pour contourner le cache
+    
     promoVisual.style.backgroundImage = `url("${imageUrl}")`;
     promoVisual.style.backgroundSize = "cover";
     promoVisual.style.backgroundPosition = "center";
 
-    // Test de chargement de l'image
+  
     const testImg = new Image();
     testImg.onload = () => {
       console.log("✅ Image promo chargée avec succès");
@@ -377,7 +379,7 @@ document.getElementById("imageModal")?.addEventListener("click", () => {
 
 
 
-// À ajouter à la fin de votre fichier HTML ou dans un fichier .js séparé
+
 document.addEventListener('DOMContentLoaded', function() {
   const video = document.getElementById('heroVideo');
   const muteBtn = document.getElementById('muteBtn');
